@@ -1,0 +1,94 @@
+import React from 'react';
+import InputNumber from 'rc-input-number';
+
+export default class TierListCreateForm extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            title: '',
+            description: '',
+            numberOfCompetition: 8,
+            listOfCompetitors: {},
+            error: ''
+        }
+      }
+      onTitleChange = (e) => {
+        const title = e.target.value;
+        this.setState(() => ({ title }));
+      };
+      onDescriptionChange = (e) => {
+        const description = e.target.value;
+        this.setState(() => ({ description }))
+      }
+      onNumberOfCompetitionChange = (value) => {
+        const numberOfCompetition = value;
+        if ( numberOfCompetition > 0 && numberOfCompetition < 51 ) {
+          this.setState(() => ({ numberOfCompetition }));
+        };
+      };
+      onCompetitorFieldsChange = (e) => {
+        const competitorName = e.target.value
+        const key = e.target.getAttribute('data-competitor')
+        let listOfCompetitors = this.state.listOfCompetitors;
+        listOfCompetitors[key] = competitorName;
+        this.setState({ listOfCompetitors })
+      }
+      onSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.state)
+        if (!this.state.title || !this.state.numberOfCompetition) {
+          this.setState(() => ({ error: 'Please provide a title and number of competitors'}))
+        } else {
+            this.setState(() => ({ error: '' }))
+            this.props.onSubmit({
+              title: this.state.title,
+              description: this.state.description,
+              numberOfCompetition: this.state.numberOfCompetition,
+              listOfCompetitors: this.state.listOfCompetitors
+            });
+        };
+      };
+    render() {
+       let competitorFields = [];
+       for (let i=1; i<=this.state.numberOfCompetition; i++) {
+         competitorFields.push(
+         <input 
+          type="text" 
+          placeholder="Competitor Name"
+          key={"competitor: " + i} 
+          data-competitor={i}
+          onChange={this.onCompetitorFieldsChange}
+         />);
+       }
+        return (
+            <div>
+              <h3>Tier List Creation Form</h3>
+               <form onSubmit={this.onSubmit}>
+                <input 
+                  type="text"
+                  placeholder="title" 
+                  onChange={this.onTitleChange}
+                />
+                <input 
+                  type="text"
+                  placeholder="description" 
+                  onChange={this.onDescriptionChange}
+                />
+                <InputNumber 
+                  value={this.state.numberOfCompetition}
+                  min={1} 
+                  max={50} 
+                  required={true} 
+                  style={{ width: 100 }}
+                  onChange={this.onNumberOfCompetitionChange}
+                />
+                {competitorFields}
+                <button>Create</button>
+               </form>
+            </div>
+        
+        )
+    }
+} 
+
+//
