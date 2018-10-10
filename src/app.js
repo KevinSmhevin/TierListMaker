@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
-import { startGetAllUserTierList, startGetAllTierList } from './actions/tierList'
+import { startGetAllTierList } from './actions/tierList'
 import { login, logout } from './actions/auth';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
@@ -12,9 +12,9 @@ import { firebase } from './firebase/firebase';
 import LoadingPage from './components/LoadingPage';
 
 
-import { createTierList, setCreateTierList, updateTierList, startUpdateTierList, setRemoveTierList } from './actions/tierList';
-import { setTextFilter } from './actions/filters';
-import getVisibleTierLists from './selectors/tierLists'
+// import { createTierList, setCreateTierList, updateTierList, startUpdateTierList, setRemoveTierList } from './actions/tierList';
+// import { setTextFilter } from './actions/filters';
+// import getVisibleTierLists from './selectors/tierLists'
 
 const store = configureStore();
 
@@ -23,9 +23,6 @@ const store = configureStore();
 //  store.dispatch(setCreateTierList({ title: 'League', description: 'champions', numberOfCompetition: 1, competitorList: {} }))
 
 // store.dispatch(setTextFilter('Le'))
-
-
-const state = store.getState();
 
 // const visibleTierLists = getVisibleTierLists(state.tierList, state.filters);
 
@@ -37,7 +34,9 @@ const jsx = (
     <AppRouter />
   </Provider>
 );
+
 let hasRendered = false;
+
 const renderApp = () => {
   if (!hasRendered) {
     ReactDOM.render(jsx, document.getElementById('app'));
@@ -51,7 +50,6 @@ firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     store.dispatch(login(user.uid));
     store.dispatch(startGetAllTierList()).then(() => {
-      console.log(state)
       renderApp();
       if (history.location.pathname === '/') {
         history.push('/dashboard');

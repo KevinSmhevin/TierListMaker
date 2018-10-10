@@ -16,11 +16,10 @@ export const getTierLists = (tierLists) => ({
 
 export const startGetAllTierList = () => {
     return (dispatch) => {
+        const tierLists = [];
         return db.collection('tierLists').get()
         .then((collection) => {
             const tierList = collection.docs.map(doc => doc.data().tierList)
-            const tierLists = []
-            console.log(tierList)
             tierLists.push(tierList)
             console.log(tierLists)
             dispatch(getTierLists(tierLists))
@@ -61,7 +60,7 @@ export const startCreateTierList = ( tierListData = {} ) => {
             userId = `${uid}`
         } = tierListData;
         const tierList = { title, description, numberOfCompetition, listOfCompetitors , userId}
-        const newTierList = db.collection(`tierLists`)
+        const newTierList = db.collection('tierLists');
         return newTierList.add({tierList}).then((snapshot) => {
            dispatch(createTierList({
                id: snapshot.id,

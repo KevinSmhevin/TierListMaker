@@ -1,11 +1,14 @@
-const tierListReducerDefaultState = [];
+const tierListReducerDefaultState =  [];
 
 export default (state = tierListReducerDefaultState, action) => {
-    switch(action.type) { 
+    switch (action.type) { 
         case 'GET_TIER_LIST':
-          return state.filter(({ id }) => id === action.id)
+          return state.filter(({ id }) => id === action.id);
         case 'GET_TIER_LISTS':
-          return action.tierLists
+          for (let i=0; i <action.tierLists.length; i++) {
+            console.log(state)
+            return state.push(action.tierLists[i])
+          }
         case 'CREATE_TIER_LIST':
           return [
             ...state,
@@ -25,6 +28,6 @@ export default (state = tierListReducerDefaultState, action) => {
             };
           });
           default: 
-          return state;
+            return state;
     }
 };
