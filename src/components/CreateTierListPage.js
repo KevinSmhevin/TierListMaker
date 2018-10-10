@@ -2,12 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import TierListCreateForm from './TierListCreateForm';
 import PowerRankingCreateForm from './PowerRankingCreateForm';
-import { createTierList } from '../actions/tierList';
+import { createTierList, startCreateTierList } from '../actions/tierList';
 
 export class CreateTierListPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { formType: null}
+        this.state = {}
     }
     onCreatePowerRanking = (e) => {
         this.setState(() => ({ formType: 'Power Ranking'}))
@@ -16,7 +16,7 @@ export class CreateTierListPage extends React.Component {
        this.setState(() => ({ formType: 'Tier List'}))
     }
     onSubmit = (tierList) => {
-        this.props.createTierList(tierList);
+        this.props.startCreateTierList(tierList);
         this.props.history.push('/');
       };
     render() {
@@ -38,7 +38,7 @@ export class CreateTierListPage extends React.Component {
     }
 }
 const mapDispatchToProps = (dispatch) => ({
-    createTierList: (tierList) => dispatch(createTierList(tierList))
+    startCreateTierList: (tierList) => dispatch(startCreateTierList(tierList))
 });
 
 export default connect(undefined, mapDispatchToProps)(CreateTierListPage);

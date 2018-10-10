@@ -11,7 +11,7 @@ export default () => {
     combineReducers({
       auth: authReducer,
       tierList: tierListReducer,
-      filters: filtersReducer,
+      filters: filtersReducer
     }),
     composeEnhancers(applyMiddleware(thunk))
   );

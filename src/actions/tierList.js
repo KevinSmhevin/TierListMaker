@@ -1,60 +1,106 @@
 import uuid from 'uuid';
-import { database } from 'firebase';
+import db from '../firebase/firebase';
 
-export const createTierList = (
-    {
-        title = '',
-        description = '',
-        numberOfCompetition = 0,
-        // category = 'other',
-        // tierListOrder = ascending,
-        listOfCompetitors = {}
-    }
-    = {} ) => ({
-        type: 'CREATE_TIER_LIST',
-        tierList: {
-            id: uuid(),
-            title,
-            description,
-            numberOfCompetition,
-            // category,
-            // tierListOrder,
-           listOfCompetitors,
-        }
-    })
 
-    export const startCreateTierList = ( tierListData = {} ) => {
-        return (dispatch, getState) => {
-            const uid = getState().auth.uid 
-            const {
-                title = '',
-                description = '',
-                numberOfCompetition = 0,
-                listOfCompetitors = {}
-            } = tierListData;
-            const tierList = { title, description, numberOfCompetition, listOfCompetitors }
-            return database.ref(`tierlists/${uid}-tierLists`).push(tierList).then((ref) => {
-                dispatch()
+//GET TIER LISTS
+
+export const getTierList = ( id ) => ({
+    type: 'GET_TIER_LIST',
+    id
+})
+
+export const getTierLists = (tierLists) => ({
+    type: 'GET_TIER_LISTS',
+    tierLists
+})
+
+export const startGetAllTierList = () => {
+    return (dispatch) => {
+        return db.collection('tierLists').get()
+        .then((collection) => {
+            const tierList = collection.docs.map(doc => doc.data().tierList)
+            const tierLists = []
+            console.log(tierList)
+            tierLists.push(tierList)
+            console.log(tierLists)
+            dispatch(getTierLists(tierLists))
             })
-
-        }
     }
+}
+
+export const startGetAllUserTierList = () => {
+    return (getState, dispatch) => {
+        const uid = getState().auth.uid
+        return db.collection('tierLists').where("userId", "==", uid)
+        .get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((eachQuery) => {
+                dispatch(getTierList(eachQuery))
+            })
+        })
+    }
+}
 
 
-// const addExpense = (
-//     { 
-//     description = '', 
-//     note = '', 
-//     amount = 0, 
-//     createdAt = 0 
-//     } 
-//     = {} ) => ({
-//     type: 'ADD_EXPENSE',
-//     expense: {
-//         id: uuid(),
-//         description,
-//         note,
-//         amount,
-//         createdAt
-//     }
-// })
+//ADD TIER LISTS
+
+export const createTierList = (tierList) => ({
+        type: 'CREATE_TIER_LIST',
+        tierList
+});
+
+
+export const startCreateTierList = ( tierListData = {} ) => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid 
+        const {
+            title = '',
+            description = '',
+            numberOfCompetition = 0,
+            listOfCompetitors = {},
+            userId = `${uid}`
+        } = tierListData;
+        const tierList = { title, description, numberOfCompetition, listOfCompetitors , userId}
+        const newTierList = db.collection(`tierLists`)
+        return newTierList.add({tierList}).then((snapshot) => {
+           dispatch(createTierList({
+               id: snapshot.id,
+               ...tierList
+           }))
+       });
+    }
+ }
+;
+ // REMOVE TIER LIST
+
+export const removeTierList = ({ id } = {}) => {
+    type: 'REMOVE_TIERLIST',
+    id
+}
+
+export const setRemoveTierList = ({ id } = {}) => {
+    return (dispatch) => {
+        return db.collection('tierLists').doc(id).delete().then(() => {
+            dispatch(removeTierList({ id }))
+            console.log('removed!')
+        });
+    };
+}
+
+
+//UPDATE TIER LIST
+
+export const updateTierList = (id, updates) => {
+    type: 'UPDATE_TIER_LIST',
+    id,
+    updates
+}
+
+export const startUpdateTierList = (id, updates) => {
+    return (dispatch) => {
+        return db.collection('tierLists').doc(id).update(updates).then(() => {
+            dispatch(updateTierList(id, updates))
+            console.log('updated!')
+        })
+    }
+}
