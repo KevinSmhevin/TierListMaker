@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import TierListCreateForm from './TierListCreateForm';
 import PowerRankingCreateForm from './PowerRankingCreateForm';
-import { createTierList, startCreateTierList } from '../actions/tierList';
+import { startCreateTierList } from '../actions/tierList';
 
 export class CreateTierListPage extends React.Component {
     constructor(props) {

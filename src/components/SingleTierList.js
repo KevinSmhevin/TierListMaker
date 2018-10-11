@@ -5,8 +5,8 @@ const SingleTierList = ({ id, title, description }) => (
     <div>
         <Link to={`/edit/${id}`}>
         <h3>{title}</h3><br></br>
-        <p>{description}</p>
         </Link>
+        <p>{description}</p>
     </div>
 )
 

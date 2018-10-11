@@ -44,7 +44,7 @@ export default class TierListCreateForm extends React.Component {
               title: this.state.title,
               description: this.state.description,
               numberOfCompetition: this.state.numberOfCompetition,
-              listOfCompetitors: this.state.listOfCompetitors
+              listOfCompetitors: this.state.listOfCompetitors,
             });
         };
       };

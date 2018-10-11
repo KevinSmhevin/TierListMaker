@@ -5,10 +5,8 @@ export default (state = tierListReducerDefaultState, action) => {
         case 'GET_TIER_LIST':
           return state.filter(({ id }) => id === action.id);
         case 'GET_TIER_LISTS':
-          for (let i=0; i <action.tierLists.length; i++) {
-            console.log(state)
-            return state.push(action.tierLists[i])
-          }
+        state = action.tierLists;
+        return state
         case 'CREATE_TIER_LIST':
           return [
             ...state,
