@@ -3,7 +3,8 @@ const tierListReducerDefaultState =  [];
 export default (state = tierListReducerDefaultState, action) => {
     switch (action.type) { 
         case 'GET_TIER_LIST':
-          return state.filter(({ id }) => id === action.id);
+          //return state.filter(({ id }) => id === action.id);
+          return state[action.id];
         case 'GET_TIER_LISTS':
         state = action.tierLists;
         return state
