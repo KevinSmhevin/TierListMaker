@@ -23,7 +23,10 @@ export class ViewTierListPage extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    tierList: state.tierList.find((tierList) => tierList.id === props.match.params.id)
+    tierList: state.tierList.find((tierList) => {
+    console.log(props)
+    return tierList.id === props.match.params.id
+    })
 });
 
 export default connect(mapStateToProps)(ViewTierListPage)

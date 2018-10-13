@@ -5,6 +5,7 @@ import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { startGetAllTierList } from './actions/tierList'
 import { login, logout } from './actions/auth';
+// import '@atlaskit/css-reset';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 import 'react-dates/lib/css/_datepicker.css';
