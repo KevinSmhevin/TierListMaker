@@ -18,10 +18,13 @@ export const startGetAllTierList = () => {
     return (dispatch) => {
         const tierLists = [];
         return db.collection('tierLists').get()
-        .then((collection) => {
-            const tierList = collection.docs.map(doc => doc.data().tierList)
-            tierLists.push(tierList)
-            dispatch(getTierLists(tierList))
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                tierLists.push({id: doc.id, ...doc.data().tierList})
+            })
+            // const tierList = collection.docs.map(doc => doc.data().tierList)
+            // console.log(tierLists)
+            dispatch(getTierLists(tierLists))
             })
     }
 }
@@ -55,48 +58,53 @@ export const startCreateTierList = ( tierListData = {} ) => {
             description = '',
             numberOfCompetition = 0,
             listOfCompetitors = {},
-            key = ''
+            columns = {
+                'column-default': {
+                    id: 'column-default',
+                    title: 'Default',
+                    competitorIds: Object.keys(listOfCompetitors)
+                }
+            },
+            columnOrder = ['column-default']
         } = tierListData;
-        const tierList = { title, description, numberOfCompetition, listOfCompetitors, key }
+        const tierList = { title, description, numberOfCompetition, listOfCompetitors, columns, columnOrder }
         const newTierList = db.collection('tierLists');
         return newTierList.add({tierList}).then((snapshot) => {
-            console.log(snapshot.id)
-            tierList.key = snapshot.id;
         dispatch(createTierList(tierList));
        });
     }
  }
 ;
- // REMOVE TIER LIST
+//  REMOVE TIER LIST
 
-// export const removeTierList = ({ id } = {}) => {
-//     type: 'REMOVE_TIERLIST',
-//     id
-// }
+export const removeTierList = ({ id } = {}) => {
+    type: 'REMOVE_TIERLIST',
+    id
+}
 
-// export const setRemoveTierList = ({ id } = {}) => {
-//     return (dispatch) => {
-//         return db.collection('tierLists').doc(id).delete().then(() => {
-//             dispatch(removeTierList({ id }))
-//             console.log('removed!')
-//         });
-//     };
-// }
+export const setRemoveTierList = ({ id } = {}) => {
+    return (dispatch) => {
+        return db.collection('tierLists').doc(id).delete().then(() => {
+            dispatch(removeTierList({ id }))
+            console.log('removed!')
+        });
+    };
+}
 
 
-// //UPDATE TIER LIST
+//UPDATE TIER LIST
 
-// export const updateTierList = (id, updates) => {
-//     type: 'UPDATE_TIER_LIST',
-//     id,
-//     updates
-// }
+export const updateTierList = (id, updates) => {
+    type: 'UPDATE_TIER_LIST',
+    id,
+    updates
+}
 
-// export const startUpdateTierList = (id, updates) => {
-//     return (dispatch) => {
-//         return db.collection('tierLists').doc(id).update(updates).then(() => {
-//             dispatch(updateTierList(id, updates))
-//             console.log('updated!')
-//         })
-//     }
-// }
+export const startUpdateTierList = (id, updates) => {
+    return (dispatch) => {
+        return db.collection('tierLists').doc(id).update(updates).then(() => {
+            dispatch(updateTierList(id, updates))
+            console.log('updated!')
+        })
+    }
+}
