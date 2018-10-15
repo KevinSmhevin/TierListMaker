@@ -12,6 +12,11 @@ export default (state = tierListReducerDefaultState, action) => {
             ...state,
             action.tierList
         ];
+        case 'CREATE_USER_TIER_LIST':
+          return [
+            ...state,
+            action.userTierList
+        ];
         case 'REMOVE_TIER_LIST':
           return state.filter(({ id }) => id !== action.id);
         case 'UPDATE_TIER_LIST':

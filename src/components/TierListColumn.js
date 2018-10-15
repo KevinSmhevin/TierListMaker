@@ -8,26 +8,31 @@ const Container = styled.div`
 margin: 8px;
 border: 1px solid lightgrey;
 border-radius: 2px;
+width: 75%
+display: flex;
 `;
 const Title = styled.h3`
 padding: 8px
 `;
 const CompetitorList = styled.div`
 padding: 8px;
+display: flex;
+flex-direction: row;
+width: 100%;
 `;
 
 
 export class TierListColumn extends React.Component {
     render() {
-        console.log(this.props)
         return (
             <Container>
                 <Title>{this.props.column.title}</Title>
-                <Droppable droppableId={this.props.column.id}>
-                    {provided => (
+                <Droppable droppableId={this.props.column.id} direction="horizontal">
+                    {(provided, snapshot) => (
                         <CompetitorList
                             innerRef={provided.innerRef}
                             {...provided.droppableProps}
+                            isDraggingOver={snapshot.isDraggingOver}
                         >
                             {this.props.competitors.map((competitor, index) => {
                                 const competitorId = parseInt(competitor)

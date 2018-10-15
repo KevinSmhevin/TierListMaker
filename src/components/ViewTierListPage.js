@@ -24,7 +24,6 @@ export class ViewTierListPage extends React.Component {
 
 const mapStateToProps = (state, props) => ({
     tierList: state.tierList.find((tierList) => {
-    console.log(props)
     return tierList.id === props.match.params.id
     })
 });

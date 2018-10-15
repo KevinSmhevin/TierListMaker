@@ -2,15 +2,25 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { TierListColumn }  from './TierListColumn';
+import styled from 'styled-components';
+import { startCreateUserTierList, startUpdateUserTierList } from '../actions/tierList';
+
+const Container = styled.div`
+dislay: flex;
+`
 
 export class EditTierListPage extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {...props.tierList}
+        this.state = {...props.tierList};
     }
-    onDragEnd = result => {
-        const { destination, source , draggableId } = result;
+    onDragStart = () => {
+        document.body.style.color = 'blue';
+    }
 
+    onDragEnd = result => {
+        document.body.style.color = 'black';
+        const { destination, source , draggableId } = result;
         if (!destination) {
             return;
         }
@@ -20,80 +30,117 @@ export class EditTierListPage extends React.Component {
         ) {
             return;
         }
-        console.log(this.state)
-        console.log(this.props)
-        const column = this.props.column[source.droppableId];
-        console.log(column)
-        const newCompetitorIds = Array.from(column.competitorIds);
-        newCompetitorIds.splice(source.index, 1);
-        newCompetitorIds.splice(destination.index, 0, draggableId);
-
-        const newColumn = {
-            ...column,
-            competitorIds: newCompetitorIds,
+        const start = this.state.columns[source.droppableId];
+        const finish = this.state.columns[destination.droppableId]  
+        if (start === finish) {
+            const newCompetitorIds = Array.from(start.competitorIds);
+            newCompetitorIds.splice(source.index, 1);
+            newCompetitorIds.splice(destination.index, 0, draggableId);
+            const newColumn = {
+                ...start,
+                competitorIds: newCompetitorIds,
+            };
+            const newTierList = {
+                ...this.state,
+                columns: {
+                    ...this.state.columns,
+                    [newColumn.id]: newColumn,
+                },
+            };
+            this.setState(newTierList)
+            console.log(this.state)
+            return;
+        }
+        const startCompetitorIds = Array.from(start.competitorIds);
+        startCompetitorIds.splice(source.index, 1);
+        const newStart = {
+            ...start,
+            competitorIds: startCompetitorIds,
+        }
+        const finishCompetitorIds = Array.from(finish.competitorIds)
+        finishCompetitorIds.splice(destination.index, 0, draggableId)
+        const newFinish = {
+            ...finish,
+            competitorIds: finishCompetitorIds,
         };
-
-        const newTierList = {
-            ...this.props,
+        const newState = {
+            ...this.state,
             columns: {
-                ...this.props.tierList.columns,
-                [newColumn.id]: newColumn,
+                ...this.state.columns,
+                [newStart.id]: newStart,
+                [newFinish.id]: newFinish,
             },
         };
 
-        this.setState(newTierList)
+        this.setState(newState);
+        return;
     };
+    onSubmit = (e) => {
+        e.preventDefault();
+        const updates = {
+            title: this.state.title,
+            columnOrder: this.state.columnOrder,
+            columns: this.state.columns,
+            description: this.state.description,
+            listOfCompetitors: this.state.listOfCompetitors,
+            id: this.state.id
+        }
+        if (this.props.userTierList) {
+            // console.log(this.state)
+            // this.props.startUpdateUserTierList(this.state.id, updates)
+            this.props.startCreateUserTierList(updates)
+        } else {
+            console.log('hi')
+            this.props.startCreateUserTierList(updates)
+        }
+        this.props.history.push('/')
+    }
     render() {
         console.log(this.state)
         return (
-            <DragDropContext onDragEnd={this.onDragEnd}>
-                {this.props.tierList.columnOrder.map(columnId => {
-                    const column = this.props.tierList.columns[columnId];
+            <DragDropContext 
+                onDragEnd={this.onDragEnd}
+                onDragStart={this.onDragStart}
+            >
+            <Container>
+            <form onSubmit={this.onSubmit}>
+                {this.state.columnOrder.map(columnId => {
+                    const column = this.state.columns[columnId];
                     const competitor = column.competitorIds.map((competitorId) => {
-                        for (let keys in this.props.tierList.listOfCompetitors) {
+                        for (let keys in this.listOfCompetitors) {
                         const competitorId = keys;
                         }
                         return competitorId
                     })
-                    return (<TierListColumn key={column.id} column={column} competitors={competitor} tierList={this.props.tierList} />);
+                    return (<TierListColumn key={column.id} column={column} competitors={competitor} tierList={this.state} />);
                 })}
+            <button>Save Tier List</button>
+            </form>
+            </Container>
             </DragDropContext>
         )
     }
 }
 
 
-const mapStateToProps = (state, props) => ({
-    tierList: state.tierList.find((tierList) => tierList.id === props.match.params.id)
-});
+const mapStateToProps = (state, props) => {
+    const uid = state.auth.uid
+    console.log(state)
+    return {
+        tierList: state.tierList.find((tierList) => tierList.id === props.match.params.id),
+        userTierList: state.userTierList.find((userTierList) => {
+            if ((userTierList.tierListid === props.match.params.id || userTierList.id === props.match.params.id ) 
+                && userTierList.userId === uid) {
+                    return userTierList
+            }
+        })
+    };
+}
+const mapDispatchToProps = (dispatch) => ({
+    startCreateUserTierList: (userTierList) => dispatch(startCreateUserTierList(userTierList)),
+    startUpdateUserTierList: (id, updates) => dispatch(startUpdateUserTierList(id, updates))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditTierListPage)
 
 
-export default connect(mapStateToProps)(EditTierListPage)
-
-
-
-// let competitorFields = [];
-// const competitors = this.props.tierList.listOfCompetitors
-// for (let keys in competitors) {
-//     competitorFields.push(<p className="tier-box-row-container" key={keys}>{keys}: {competitors[keys]}</p>)
-// }
-// return (
-//     <div className="tier-box-overall-container">
-//         <h2>{this.props.tierList.title}</h2>
-//         <p>{this.props.tierList.description}</p>
-//         <div className="tier-box-drag-drop-container">
-//             <div className="tier-box-column-container">
-//                 <section className="tier-box-row-container">S</section>
-//                 <section className="tier-box-row-container">A</section>
-//                 <section className="tier-box-row-container">B</section>
-//                 <section className="tier-box-row-container">C</section>
-//                 <section className="tier-box-row-container">D</section>
-//                 <section className="tier-box-row-container">E</section>
-//                 <section className="tier-box-row-container">F</section>
-//             </div>
-//             <div className="tier-box-column-container">
-//                 {competitorFields}
-//             </div>
-//         </div>
-//     </div>
-// )

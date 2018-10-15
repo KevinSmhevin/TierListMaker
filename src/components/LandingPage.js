@@ -1,13 +1,12 @@
 import React from 'react';
-import Header from './Header'
-import SearchTierLists from './SearchTierLists'
+import Header from './Header';
+import MyTierLists from './MyTierLists';
 
 const LandingPage = () => (
   <div>
     <Header />
-    <SearchTierLists />
+    <p>Sign in to get started!</p>
   </div>
-
 );
 
 export default LandingPage;
