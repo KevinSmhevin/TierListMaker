@@ -30,7 +30,7 @@ export const startGetAllUserTierList = () => {
         return db.collection('userTierLists').get()
         .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                userTierLists.push({tierListId: doc.id, ...doc.data().userTierList});
+                userTierLists.push({id: doc.id, ...doc.data().userTierList});
             });
             dispatch(getUserTierLists(userTierLists));
         });
@@ -50,12 +50,14 @@ export const createUserTierList = (userTierList) => ({
 
 export const startCreateTierList = ( tierListData = {} ) => {
     return (dispatch, getState) => {
-        let displayName = getState().auth.displayName;
+        const uid = getState().auth.uid;
+        const displayName = getState().auth.displayName;
         const {
             title = '',
             description = '',
             numberOfCompetition = 0,
             listOfCompetitors = {},
+            userId = uid,
             columns = {
                 'column-s': {
                     id: 'column-s',
@@ -95,7 +97,7 @@ export const startCreateTierList = ( tierListData = {} ) => {
             },
             columnOrder = ['column-s', 'column-a', 'column-b', 'column-c', 'column-d', 'column-e', 'column-f']
         } = tierListData;
-        const tierList = { title, description, numberOfCompetition, listOfCompetitors, columns, columnOrder, displayName }
+        const tierList = { title, description, numberOfCompetition, listOfCompetitors, columns, columnOrder, userId, displayName }
         const newTierList = db.collection('tierLists');
         return newTierList.add({tierList}).then((snapshot) => {
         tierList.id = snapshot.id
@@ -105,78 +107,23 @@ export const startCreateTierList = ( tierListData = {} ) => {
  }
 ;
 
-// export const startCreateTierList = ( tierListData = {} ) => {
-//     return (dispatch) => {
-//         const {
-//             title = '',
-//             description = '',
-//             numberOfCompetition = 0,
-//             listOfCompetitors = {},
-//             columns = {
-//                 'column-s': {
-//                     id: 'column-s',
-//                     title: 'S',
-//                     competitorIds: Object.keys(listOfCompetitors)
-//                 },
-//                 'column-a': {
-//                     id: 'column-a',
-//                     title: 'A',
-//                     competitorIds: [],
-//                 },
-//                 'column-b': {
-//                     id: 'column-b',
-//                     title: 'B',
-//                     competitorIds: [],
-//                 },
-//                 'column-c': {
-//                     id: 'column-c',
-//                     title: 'C',
-//                     competitorIds: [],
-//                 },
-//                 'column-d': {
-//                     id: 'column-d',
-//                     title: 'D',
-//                     competitorIds: [],
-//                 },
-//                 'column-e': {
-//                     id: 'column-e',
-//                     title: 'E',
-//                     competitorIds: [],
-//                 },
-//                 'column-f': {
-//                     id: 'column-f',
-//                     title: 'F',
-//                     competitorIds: [],
-//                 },
-//             },
-//             columnOrder = ['column-s', 'column-a', 'column-b', 'column-c', 'column-d', 'column-e', 'column-f']
-//         } = tierListData;
-//         const tierList = { title, description, numberOfCompetition, listOfCompetitors, columns, columnOrder}
-//         const newTierList = db.collection('tierLists');
-//         return newTierList.add({tierList}).then((snapshot) => {
-//         tierList.id = snapshot.id
-//         dispatch(createTierList(tierList));
-//        });
-//     }
-//  }
-
  export const startCreateUserTierList = ( userTierListData = {} ) => {
      return (dispatch, getState ) => {
-         const uid = getState().auth.uid
-         let displayName = getState().auth.displayName
+         const uid = getState().auth.uid;
+         const displayName = getState().auth.displayName;
          const {
              title = '',
              description = '',
              listOfCompetitors = {},
              columns = {},
              columnOrder = [],
-             id = '',
+             tierListId = '',
              userId = uid,
          } = userTierListData
-         const userTierList = { title, description, listOfCompetitors, columns, columnOrder, id, userId, displayName }
+         const userTierList = { title, description, listOfCompetitors, columns, columnOrder, tierListId, userId, displayName }
          const userTierListDocument = db.collection('userTierLists');
          return userTierListDocument.add({userTierList}).then((snapshot) => {
-             userTierList.tierListId = snapshot.id;
+             userTierList.id = snapshot.id;
              dispatch(createUserTierList(userTierList))
          })
     }
@@ -189,15 +136,26 @@ export const removeTierList = ({ id } = {}) => {
     id
 }
 
-export const setRemoveTierList = ({ id } = {}) => {
+export const removeUserTierList = ({ id } = {}) => {
+    type: 'REMOVE_USER_TIERLIST',
+    id
+}
+
+export const startRemoveTierList = ({ id } = {}) => {
     return (dispatch) => {
         return db.collection('tierLists').doc(id).delete().then(() => {
             dispatch(removeTierList({ id }))
-            console.log('removed!')
-        });
+        })
     };
 }
 
+export const startRemoveUserTierList = ({ id } = {}) => {
+    return (dispatch) => {
+        return db.collection('userTierLists').doc(id).delete().then(() => {
+            dispatch(removeUserTierList({ id }))
+        })
+    };
+}
 
 //UPDATE TIER LIST
 

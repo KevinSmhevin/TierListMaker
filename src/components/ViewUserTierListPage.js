@@ -1,11 +1,20 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { startRemoveUserTierList } from '../actions/tierList';
 
 export class ViewUserTierListPage extends React.Component {
     onUserTierListEdit = () => {
         this.props.history.push(`/edit/${this.props.userTierList.tierListId}`)
     }
+    onRemoveUserTierList = () => {
+        console.log(this.props)
+        if (this.props.auth.uid === this.props.userTierList.userId) {
+            this.props.startRemoveUserTierList({ id: this.props.userTierList.id })
+            this.props.history.push('/')
+        }
+    }
     render() {
+        console.log(this.props)
         let competitorFields = [];
         const competitors = this.props.userTierList.listOfCompetitors
         for (let keys in competitors) {
@@ -17,6 +26,7 @@ export class ViewUserTierListPage extends React.Component {
                 <p>{this.props.userTierList.description}</p>
                 {competitorFields}
                 <button onClick={this.onUserTierListEdit}>Edit Tier List</button>
+                <button onClick={this.onRemoveUserTierList}>Remove Your Tier List</button>
             </div>
         )
     }
@@ -25,7 +35,12 @@ export class ViewUserTierListPage extends React.Component {
 const mapStateToProps = (state, props) => ({
     userTierList: state.userTierList.find((userTierList) => {
     return userTierList.tierListId === props.match.params.id
-    })
+    }),
+    auth: state.auth
 });
 
-export default connect(mapStateToProps)(ViewUserTierListPage)
+const mapDispatchToProps = (dispatch, props) => ({
+    startRemoveUserTierList: (data) => dispatch(startRemoveUserTierList(data))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ViewUserTierListPage)

@@ -83,7 +83,7 @@ export class EditTierListPage extends React.Component {
             columns: this.state.columns,
             description: this.state.description,
             listOfCompetitors: this.state.listOfCompetitors,
-            id: this.state.id
+            tierListId: this.state.id
         }
         if (this.props.userTierList) {
             // console.log(this.state)
