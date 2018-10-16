@@ -3,12 +3,12 @@ import InputNumber from 'rc-input-number';
 
 export default class TierListCreateForm extends React.Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
-            title: '',
-            description: '',
-            numberOfCompetition: 8,
-            listOfCompetitors: {},
+            title: props.tierList ? props.tierList.title : '',
+            description: props.tierList ? props.tierList.description :'',
+            numberOfCompetition: props.tierList ? props.tierList.numberOfCompetition : 8,
+            listOfCompetitors: props.tierList ?  props.tierList.listOfCompetitors : {},
             error: ''
         }
       }
@@ -55,6 +55,7 @@ export default class TierListCreateForm extends React.Component {
          <input 
           type="text" 
           placeholder="Competitor Name"
+          value={this.state.listOfCompetitors[i]}
           key={"competitor: " + i} 
           data-competitor={i}
           onChange={this.onCompetitorFieldsChange}
@@ -67,11 +68,13 @@ export default class TierListCreateForm extends React.Component {
                 <input 
                   type="text"
                   placeholder="title" 
+                  value={this.state.title}
                   onChange={this.onTitleChange}
                 />
                 <input 
                   type="text"
                   placeholder="description" 
+                  value={this.state.description}
                   onChange={this.onDescriptionChange}
                 />
                 <InputNumber 
@@ -90,5 +93,3 @@ export default class TierListCreateForm extends React.Component {
         )
     }
 } 
-
-//

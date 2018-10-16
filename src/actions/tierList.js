@@ -131,60 +131,61 @@ export const startCreateTierList = ( tierListData = {} ) => {
 
 //  REMOVE TIER LIST
 
-export const removeTierList = ({ id } = {}) => {
-    type: 'REMOVE_TIERLIST',
+export const removeTierList = (id) => ({
+    type: 'REMOVE_TIER_LIST',
     id
-}
+});
 
-export const removeUserTierList = ({ id } = {}) => {
-    type: 'REMOVE_USER_TIERLIST',
+export const removeUserTierList = (id) => ({
+    type: 'REMOVE_USER_TIER_LIST',
     id
-}
+});
 
-export const startRemoveTierList = ({ id } = {}) => {
+export const startRemoveTierList = (id) => {
     return (dispatch) => {
         return db.collection('tierLists').doc(id).delete().then(() => {
-            dispatch(removeTierList({ id }))
+            console.log('startRemoveTierList');
+            dispatch(removeTierList(id))
         })
     };
-}
+};
 
-export const startRemoveUserTierList = ({ id } = {}) => {
+export const startRemoveUserTierList = (id) => {
     return (dispatch) => {
         return db.collection('userTierLists').doc(id).delete().then(() => {
-            dispatch(removeUserTierList({ id }))
+            console.log('startRemoveUserTierList');
+            dispatch(removeUserTierList(id))
         })
     };
-}
+};
 
 //UPDATE TIER LIST
 
-export const updateTierList = (id, updates) => {
+export const updateTierList = (id, updates) => ({
     type: 'UPDATE_TIER_LIST',
     id,
     updates
-}
+});
 
-export const updateUserTierList = (id, updates) => {
+export const updateUserTierList = (id, updates) => ({
     type: 'UPDATE_USER_TIER_LIST',
     id,
     updates
-}
+});
 
-export const startUpdateTierList = (id, ) => {
+export const startUpdateTierList = (id, updates ) => {
     return (dispatch) => {
         return db.collection('tierLists').doc(id).update(updates).then(() => {
             dispatch(updateTierList(id, updates))
-            console.log('updated!')
-        })
-    }
-}
+        });
+    };
+};
 
-export const startUpdateUserTierList = (id, updates) => {
+export const startUpdateUserTierList = (id, updates = {}) => {
     return (dispatch) => {
-        return db.collection('userTierLists').doc(id).update({updates}).then(() => {
+        const userTierList = db.collection('userTierLists').doc(id)
+        userTierList.update(updates).then(() => {
             dispatch(updateUserTierList(id, updates))
-            console.log('updated!')
         })
     }
 }

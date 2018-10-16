@@ -11,6 +11,7 @@ import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import EditTierListPage from '../components/EditTierListPage';
 import ViewUserTierListPage from '../components/ViewUserTierListPage';
+import UpdateTierListPage from '../components/UpdateTierListPage';
 
 export const history = createHistory();
 
@@ -25,6 +26,7 @@ const AppRouter = () => (
         <PrivateRoute path="/view/:id" component={ViewTierListPage} />
         <PrivateRoute path="/edit/:id" component={EditTierListPage} />
         <PrivateRoute path="/viewTierList/:id" component={ViewUserTierListPage} />
+        <PrivateRoute path="/update/:id" component={UpdateTierListPage} /> 
         <Route component={NotFoundPage} />
       </Switch>
     </div>
