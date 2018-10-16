@@ -181,7 +181,7 @@ export const startUpdateTierList = (id, updates ) => {
     };
 };
 
-export const startUpdateUserTierList = (id, updates = {}) => {
+export const startUpdateUserTierList = (id, updates) => {
     return (dispatch) => {
         const userTierList = db.collection('userTierLists').doc(id)
         userTierList.update(updates).then(() => {
