@@ -3,8 +3,7 @@ const tierListReducerDefaultState =  [];
 export default (state = tierListReducerDefaultState, action) => {
     switch (action.type) { 
         case 'GET_TIER_LIST':
-          //return state.filter(({ id }) => id === action.id);
-          return state[action.id];
+          return state.filter(({ id }) => id === action.id);
         case 'GET_TIER_LISTS':
         state = action.tierLists;
         return state
@@ -14,7 +13,8 @@ export default (state = tierListReducerDefaultState, action) => {
             action.tierList
         ];
         case 'REMOVE_TIER_LIST':
-          return state.filter(({ id }) => id !== action.id);
+          console.log(state)
+          return state.filter(( tierList ) => tierList.id !== action.id);
         case 'UPDATE_TIER_LIST':
           return state.map((tierList) => {
             if (tierList.id === action.id) {

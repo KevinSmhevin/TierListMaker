@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
-import { startGetAllTierList } from './actions/tierList'
+import { startGetAllTierList, startGetAllUserTierList } from './actions/tierList'
 import { login, logout } from './actions/auth';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
@@ -48,7 +48,8 @@ ReactDOM.render(<LoadingPage />, document.getElementById('app'));
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
-    store.dispatch(login(user.uid));
+    store.dispatch(login(user.uid, user.displayName));
+    store.dispatch(startGetAllUserTierList())
     store.dispatch(startGetAllTierList()).then(() => {
       renderApp();
       if (history.location.pathname === '/') {
