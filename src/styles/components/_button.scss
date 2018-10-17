@@ -1,9 +1,13 @@
 .button {
-  background: $blue;
+  background: $alabaster;
   border: none;
-  color: white;
+  color: $cape-cod;
   display: inline-block;
   font-size: $font-size-large;
+  box-shadow: 3px 3px 2px $dark-grey;
+  border: 0.5px solid $cape-cod;
+  border-radius: 2.5px;
+  text-align: center;
   font-weight: 300;
   line-height: 1;
   padding: $s-size;

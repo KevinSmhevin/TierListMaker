@@ -8,26 +8,14 @@ export class CreateTierListPage extends React.Component {
         super(props);
         this.state = {}
     }
-    onCreatePowerRanking = (e) => {
-        this.setState(() => ({ formType: 'Power Ranking'}))
-    }
-    onCreateTierList = (e) => {
-       this.setState(() => ({ formType: 'Tier List'}))
-    }
     onSubmit = (tierList) => {
         this.props.startCreateTierList(tierList);
         this.props.history.push('/');
       };
     render() {
-        const formType = this.state.formType;
-        let createForm;
-        if (formType === 'Tier List') {
-            createForm = <TierListCreateForm onSubmit={this.onSubmit}/>
-        }
         return (
             <div>
-                <button onClick={this.onCreateTierList}>Create Tier List</button>
-                {createForm}
+                <TierListCreateForm onSubmit={this.onSubmit}/>
             </div>
         )
     }

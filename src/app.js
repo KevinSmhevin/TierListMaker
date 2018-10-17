@@ -58,7 +58,10 @@ firebase.auth().onAuthStateChanged((user) => {
     });
   } else {
     store.dispatch(logout());
-    renderApp();
-    history.push('/');
+    store.dispatch(startGetAllUserTierList())
+    store.dispatch(startGetAllTierList()).then(() => {
+      renderApp();
+      history.push('/');
+    })
   }
 });

@@ -1,19 +1,20 @@
 .box-layout {
   align-items: center;
-  // background: url('/images/bg.jpg');
-  // background-size: cover;
   display: flex;
+  flex-direction: column;
   height: 100vh;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100vw;
 }
 
 .box-layout__box {
-  background: fade-out(white, .15);
-  border-radius: 3px;
+  background: $nevada;
+  border-radius: 2.5px;  
+  box-shadow: 3px 3px 2px grey;
   padding: $l-size $m-size;
   text-align: center;
   width: 25rem;
+  color: $alabaster;
 }
 
 .box-layout__title {

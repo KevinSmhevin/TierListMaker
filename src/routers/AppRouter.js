@@ -9,9 +9,10 @@ import LoginPage from '../components/LoginPage';
 import LandingPage from '../components/LandingPage'
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
-import EditTierListPage from '../components/EditTierListPage';
+import UseTierListPage from '../components/UseTierListPage';
 import ViewUserTierListPage from '../components/ViewUserTierListPage';
 import UpdateTierListPage from '../components/UpdateTierListPage';
+import GuestRoute from './GuestRoute'
 
 export const history = createHistory();
 
@@ -23,11 +24,11 @@ const AppRouter = () => (
         <PublicRoute path="/login" component={LoginPage} exact={true} />
         <PrivateRoute path="/create" component={CreateTierListPage} />
         <PrivateRoute path="/dashboard" component={DashboardPage} />
-        <PrivateRoute path="/view/:id" component={ViewTierListPage} />
-        <PrivateRoute path="/edit/:id" component={EditTierListPage} />
-        <PrivateRoute path="/viewTierList/:id" component={ViewUserTierListPage} />
+        <GuestRoute path="/view/:id" component={ViewTierListPage} />
+        <PrivateRoute path="/edit/:id" component={UseTierListPage} />
+        <GuestRoute path="/viewTierList/:id" component={ViewUserTierListPage} />
         <PrivateRoute path="/update/:id" component={UpdateTierListPage} /> 
-        <Route component={NotFoundPage} />
+        <PublicRoute component={NotFoundPage} />
       </Switch>
     </div>
   </Router>

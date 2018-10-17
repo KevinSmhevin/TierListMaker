@@ -1,11 +1,12 @@
 import React from 'react';
 import Header from './Header';
-import MyTierLists from './MyTierLists';
+import CombinedList from './CombinedList';
 
 const LandingPage = () => (
   <div>
     <Header />
-    <p>Sign in to get started!</p>
+    <h3>Sign in to get started!</h3>
+    <CombinedList />
   </div>
 );
 

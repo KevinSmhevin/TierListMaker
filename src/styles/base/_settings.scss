@@ -4,12 +4,49 @@ $grey: #666;
 $blue: #1c88bf;
 $dark-blue: #364051;
 $off-white: #f7f7f7;
+
+$alabaster: #F8F8F8;
+$mantle: #879591;
+$heathered-gray: #B9B099;
+$nevada: #66767E;
+$cape-cod: #374744;
+
+
+$fall-green: #EEE3C0;
+$tacha: #D4C576;
+$wedgewood: #417991;
+$cabaret: #D0447C;
+$revolver: #1F152B;
+
+
 // Font Size
 $font-size-large: 1.8rem;
 $font-size-small: 1.4rem;
+
 // Spacing
-$s-size: 1.2rem;
-$m-size: 1.6rem;
-$l-size: 3.2rem;
-$xl-size: 4.8rem;
+$xs-size: .75rem;
+$s-size: 1rem;
+$m-size: 1.5rem;
+$ml-size: 2rem;
+$l-size: 3rem;
+$xl-size: 4rem;
 $desktop-breakpoint: 45rem;
+
+@mixin breakpoint($point) {
+    @if $point == desktop {
+      @media (min-width: 70em) { @content ; }
+   }
+    @else if $point == laptop {
+      @media (min-width: 64em) { @content ; }
+   }
+     @else if $point == tablet {
+      @media (min-width: 50em) { @content ; }
+   }
+    @else if $point == phablet {
+      @media (min-width: 37.5em)  { @content ; }
+   }
+   @else if $point == mobileonly {
+      @media (max-width: 37.5em)  { @content ; }
+ 
+   }
+ }

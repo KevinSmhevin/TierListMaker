@@ -7,13 +7,15 @@ export default (state = tierListReducerDefaultState, action) => {
         case 'GET_TIER_LISTS':
         state = action.tierLists;
         return state
+        case 'GET_USERS_TIER_LISTS':
+        state = action.userstierLists;
+        return state
         case 'CREATE_TIER_LIST':
           return [
             ...state,
             action.tierList
         ];
         case 'REMOVE_TIER_LIST':
-          console.log(state)
           return state.filter(( tierList ) => tierList.id !== action.id);
         case 'UPDATE_TIER_LIST':
           return state.map((tierList) => {

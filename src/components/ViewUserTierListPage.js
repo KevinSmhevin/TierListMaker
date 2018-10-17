@@ -49,7 +49,6 @@ export class ViewUserTierListPage extends React.Component {
                 },
             };
             this.setState(newTierList)
-            console.log(this.state)
             return;
         }
         const startCompetitorIds = Array.from(start.competitorIds);
@@ -87,11 +86,9 @@ export class ViewUserTierListPage extends React.Component {
             tierListId: this.state.id
         }
         if (this.props.userTierList) {
-            console.log(this.state)
             this.props.startUpdateUserTierList(this.state.id, updates)
             // this.props.startCreateUserTierList(updates)
         } else {
-            console.log('hi')
             this.props.startCreateUserTierList(updates)
         }
         this.props.history.push('/')
@@ -100,14 +97,12 @@ export class ViewUserTierListPage extends React.Component {
         this.props.history.push(`/edit/${this.props.userTierList.tierListId}`)
     }
     onRemoveUserTierList = () => {
-        console.log(this.props)
         if (this.props.auth.uid === this.props.userTierList.userId) {
             this.props.startRemoveUserTierList(this.props.userTierList.id)
             this.props.history.push('/')
         }
     }
     render() {
-        console.log(this.props)
         let competitorFields = [];
         const competitors = this.props.userTierList.listOfCompetitors
         for (let keys in competitors) {
@@ -130,9 +125,9 @@ export class ViewUserTierListPage extends React.Component {
                     })
                     return (<TierListColumn key={column.id} column={column} competitors={competitor} tierList={this.state} />);
                 })}
-            <button>Save Tier List</button>
+                <button>Save Changes</button>
             </form>
-            <button onClick={this.onRemoveUserTierList}>Remove Tier List</button>
+            <button onClick={this.onRemoveUserTierList}>Delete Tierlist</button>
             </Container>
             </DragDropContext>
         )

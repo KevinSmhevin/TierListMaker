@@ -1,11 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import CombinedList from './CombinedList';
 
 const DashboardPage = () => (
   <div>
-    <NavLink to="/create" className="side button">Create A Tier List Template!</NavLink>
-    <button className="side button">View My TierLists</button>
+    <NavLink to="/create">Create A Tier List Template!</NavLink>
     <CombinedList />
   </div>
 

@@ -144,7 +144,6 @@ export const removeUserTierList = (id) => ({
 export const startRemoveTierList = (id) => {
     return (dispatch) => {
         return db.collection('tierLists').doc(id).delete().then(() => {
-            console.log('startRemoveTierList');
             dispatch(removeTierList(id))
         })
     };
@@ -153,7 +152,6 @@ export const startRemoveTierList = (id) => {
 export const startRemoveUserTierList = (id) => {
     return (dispatch) => {
         return db.collection('userTierLists').doc(id).delete().then(() => {
-            console.log('startRemoveUserTierList');
             dispatch(removeUserTierList(id))
         })
     };
@@ -190,18 +188,29 @@ export const startUpdateUserTierList = (id, updates = {}) => {
     }
 }
 
-// export const startGetAllUserTierList = () => {
-//     return (getState, dispatch) => {
-//         const uid = getState().auth.uid
-//         return db.collection('tierLists').where("userId", "==", uid)
-//         .get()
-//         .then((querySnapshot) => {
-//             querySnapshot.forEach((eachQuery) => {
-//                 dispatch(getTierList(eachQuery))
-//             })
-//         })
-//     }
-// }
+export const getUsersTierLists = (usersTierLists) => ({
+    type: 'GET_USERS_TIER_LISTS',
+    usersTierLists
+})
+
+export const startGetAllUsersTierList = () => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        const usersTierLists = [];
+        const tierListRef = db.collection('tierLists')
+        return tierListRef.where("userId", "==", uid)
+        .get()
+        .then((querySnapshot) => {
+            console.log(querySnapshot)
+            console.log(uid)
+            querySnapshot.forEach((doc) => {
+                console.log(doc)
+                usersTierLists.push(doc)
+                dispatch(getUsersTierLists(usersTierLists))
+            })
+        })
+    }
+}
 
 
 //ADD TIER LISTS
