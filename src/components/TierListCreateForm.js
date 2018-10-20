@@ -49,10 +49,13 @@ export default class TierListCreateForm extends React.Component {
         };
       };
     render() {
+      const upHandler = (<div><i className="fas fa-sort-up"></i></div> )
+      const downHandler = (<div><i className="fas fa-sort-down"></i></div>)
        let competitorFields = [];
        for (let i=1; i<=this.state.numberOfCompetition; i++) {
          competitorFields.push(
-         <input 
+         <input
+          className="form-field"
           type="text" 
           placeholder="Competitor Name"
           value={this.state.listOfCompetitors[i]}
@@ -62,16 +65,18 @@ export default class TierListCreateForm extends React.Component {
          />);
        }
         return (
-            <div>
-              <h3>Tier List Creation Form</h3>
-               <form onSubmit={this.onSubmit}>
-                <input 
+            <div className="form-container">
+               <form className="form" onSubmit={this.onSubmit}>
+               <h3 className="form-title">Tier List Creation Form</h3>
+                <input
+                  className="input-title"
                   type="text"
                   placeholder="title" 
                   value={this.state.title}
                   onChange={this.onTitleChange}
                 />
                 <input 
+                  className="input-description"
                   type="text"
                   placeholder="description" 
                   value={this.state.description}
@@ -82,14 +87,20 @@ export default class TierListCreateForm extends React.Component {
                   min={1} 
                   max={50} 
                   required={true} 
-                  style={{ width: 100 }}
+                  style={{ width: 150 }}
                   onChange={this.onNumberOfCompetitionChange}
+                  upHandler={upHandler}
+                  downHandler={downHandler}
                 />
+                <div className="competitor-fields">
                 {competitorFields}
-                <button>Create</button>
+                </div>
+                <button className="create button">Create</button>
                </form>
             </div>
         
         )
     }
 } 
+
+{/* <img src="/images/up.png"></img>  */}

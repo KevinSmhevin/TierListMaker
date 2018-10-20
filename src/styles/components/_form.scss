@@ -1,12 +1,69 @@
+
 .form {
+  margin-top: $l-size;
+  background: $slated;
+  color: $alabaster;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
+  box-shadow: 3px 3px 2px $dark-grey;
+  padding: $l-size $m-size;
+  border-radius: 5px;
+  width: 50%;
   >* {
     margin-bottom: $m-size;
   }
 }
 
+.form-title {
+  font-size: 3rem;
+}
+
+.input-title {
+  border-radius: 5px;
+  width: 50%;
+  min-height: 40px;
+  padding: 2px;
+}
+
+.input-description {
+  border-radius: 5px;
+  width: 50%;
+  min-height: 40px;
+  padding: 2px;
+}
+
+.form-container {
+  display: flex;
+  justify-content: center;
+}
+
+.competitor-fields {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 90%;
+  height: 20vh;
+  overflow: auto;
+}
+
+.form-field {
+  border-radius: 5px;
+  width: 40%;
+  min-height: 40px;
+  margin: 0 $s-size $m-size 0;
+}
+
 .form__error {
   margin: 0 0 $m-size 0;
   font-style: italic;
+}
+
+@include breakpoint(mobileonly) {
+  .form {
+    width: 100%;
+  }
 }

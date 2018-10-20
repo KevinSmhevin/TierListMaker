@@ -1,18 +1,59 @@
 .button {
-  background: $alabaster;
+  color: $alabaster;
   border: none;
-  color: $cape-cod;
   display: inline-block;
-  font-size: $font-size-large;
-  box-shadow: 3px 3px 2px $dark-grey;
-  border: 0.5px solid $cape-cod;
-  border-radius: 2.5px;
   text-align: center;
   font-weight: 300;
   line-height: 1;
-  padding: $s-size;
+  padding: $m-size;
   text-decoration: none;
 }
+
+.nav {
+  background: $smooth-blue;
+  border-radius: 30px;
+  font-size: 1.5rem
+}
+
+.nav:hover {
+  background: #245ea5
+}
+
+.create {
+  border-radius: 5px;
+  padding: $m-size;
+  font-size: 2rem;
+  color: $cape-cod;
+  background: $alabaster;
+}
+
+.create:hover {
+  background: #efefef;
+}
+
+.view-button {
+  font-size: 1.2rem;
+  border-radius: 5px;
+  margin: $xs-size;
+  background: $nevada;
+}
+
+.view-button:hover {
+  background: #4a555b;
+}
+
+.user {
+  color: $alabaster;
+  background: $smooth-blue;
+  border: 1px solid $alabaster;
+  border-radius: 5px;
+  margin: $m-size;
+}
+
+.user:hover {
+  background: #245ea5;
+}
+
 
 .button--link {
   background: none;

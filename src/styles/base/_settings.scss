@@ -10,6 +10,8 @@ $mantle: #879591;
 $heathered-gray: #B9B099;
 $nevada: #66767E;
 $cape-cod: #374744;
+$olive-haze: #8C8569;
+$shadow: #8B7355;
 
 
 $fall-green: #EEE3C0;
@@ -17,6 +19,11 @@ $tacha: #D4C576;
 $wedgewood: #417991;
 $cabaret: #D0447C;
 $revolver: #1F152B;
+
+
+$smooth-blue: #327dde;
+$slated: #242629;
+$cool-grey: #4F4F4F;
 
 
 // Font Size
@@ -30,6 +37,7 @@ $m-size: 1.5rem;
 $ml-size: 2rem;
 $l-size: 3rem;
 $xl-size: 4rem;
+$xxl-size: 5.5rem;
 $desktop-breakpoint: 45rem;
 
 @mixin breakpoint($point) {

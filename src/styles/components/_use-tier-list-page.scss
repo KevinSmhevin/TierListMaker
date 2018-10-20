@@ -1,0 +1,28 @@
+.drag-drop-container {
+    color: $cape-cod;
+    display: flex;
+}
+
+.column-container {
+    background: $nevada;
+    margin: 8px 15px 8px 8px;
+    border: 1px dashed lightgrey;
+    border-radius: 5px;
+    min-height: 7.5rem;
+    display: flex;
+}
+
+.column-title {
+    color: $heathered-gray;
+    font-size: 2.5rem;
+    padding: 8px;
+}
+
+.competitor-list {
+    padding: 8px;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+

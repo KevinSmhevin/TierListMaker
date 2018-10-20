@@ -2,12 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import TierListRow from './TierListRow';
 import UserTierListRow from './UserTierListRow';
-import { startGetAllUsersTierList } from '../actions/tierList'
 
 export class CombinedList extends React.Component {
-    onClick = () => {
-        this.props.startGetAllUsersTierList()
-    }
     render() {
         return (
             <div className="combined-tier-list-container">
@@ -48,8 +44,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    startCreateTierList: (tierList) => dispatch(startCreateTierList(tierList)),
-    startGetAllUsersTierList: () => dispatch(startGetAllUsersTierList())
+    startCreateTierList: (tierList) => dispatch(startCreateTierList(tierList))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CombinedList)

@@ -10,6 +10,9 @@ export default (state = userTierListReducerDefaultState, action) => {
         case 'GET_USER_TIER_LISTS':
             state = action.userTierLists;
             return state;
+        case 'GET_MY_USER_TIER_LISTS':
+            state = action.myUserTierLists;
+            return state
         case 'REMOVE_USER_TIER_LIST':
             return state.filter((userTierList) => userTierList.id !== action.id);
         case 'UPDATE_USER_TIER_LIST':

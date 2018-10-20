@@ -1,0 +1,65 @@
+.view-tier-list-container {
+    width: 50%;
+    margin: 10vh auto auto auto;
+    padding: $m-size;
+}
+
+.header-container {
+    margin: auto auto $ml-size auto;
+    width: 60%;
+    padding: $m-size;
+    background: $nevada;
+    border-radius: 5px;
+}
+
+.view-tier-list-title {
+    font-size: 2rem;
+    text-align: center;
+    color: $heathered-gray;
+}
+
+.view-tier-list-description {
+    font-size: 1.6rem;
+    text-align: center;
+    color: $alabaster;
+}
+
+@include breakpoint(mobileonly) {
+    .view-tier-list-container {
+      width: 80%;
+    }
+  }
+
+  .competitor-container {
+      display: flex; 
+      flex-direction: row;
+      flex-wrap: wrap;
+      margin: auto auto $ml-size auto;
+      width: 80%;
+      justify-content: center;
+      text-align: center;
+      background: $alabaster;
+      color: $cape-cod;
+      padding: $m-size;
+      border-radius: 5px;
+  }
+
+  .view-competitor {
+      width: 30%;
+  }
+  
+  .button-container {
+      margin: auto;
+      width: 80%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+  }
+
+  @include breakpoint(mobileonly) {
+    .button-container {
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+    }
+}

@@ -6,10 +6,6 @@ import { TierListColumn }  from './TierListColumn';
 import styled from 'styled-components';
 import { startCreateUserTierList, startUpdateUserTierList } from '../actions/tierList';
 
-const Container = styled.div`
-dislay: flex;
-`
-
 export class ViewUserTierListPage extends React.Component {
     constructor(props) {
         super(props);
@@ -86,8 +82,8 @@ export class ViewUserTierListPage extends React.Component {
             tierListId: this.state.id
         }
         if (this.props.userTierList) {
+
             this.props.startUpdateUserTierList(this.state.id, updates)
-            // this.props.startCreateUserTierList(updates)
         } else {
             this.props.startCreateUserTierList(updates)
         }
@@ -113,8 +109,10 @@ export class ViewUserTierListPage extends React.Component {
                 onDragEnd={this.onDragEnd}
                 onDragStart={this.onDragStart}
             >
-            <Container>
+            <div className="drag-drop-container">
             <form onSubmit={this.onSubmit}>
+                <button className="user button">Save Changes</button>
+                <button className="user button" onClick={this.onRemoveUserTierList}>Delete Tierlist</button>
                 {this.state.columnOrder.map(columnId => {
                     const column = this.state.columns[columnId];
                     const competitor = column.competitorIds.map((competitorId) => {
@@ -125,10 +123,8 @@ export class ViewUserTierListPage extends React.Component {
                     })
                     return (<TierListColumn key={column.id} column={column} competitors={competitor} tierList={this.state} />);
                 })}
-                <button>Save Changes</button>
             </form>
-            <button onClick={this.onRemoveUserTierList}>Delete Tierlist</button>
-            </Container>
+            </div>
             </DragDropContext>
         )
     }

@@ -179,38 +179,58 @@ export const startUpdateTierList = (id, updates ) => {
     };
 };
 
-export const startUpdateUserTierList = (id, updates = {}) => {
+export const startUpdateUserTierList = (id, updates) => {
     return (dispatch) => {
+        const userTierListUpdates = {updates}
+        console.log(userTierListUpdates.updates)
         const userTierList = db.collection('userTierLists').doc(id)
-        userTierList.update(updates).then(() => {
-            dispatch(updateUserTierList(id, updates))
+        return userTierList.update(userTierListUpdates.updates).then(() => {
+            console.log(userTierListUpdates.updates)
+            dispatch(updateUserTierList(id, userTierListUpdates.updates))
         })
     }
 }
 
-export const getUsersTierLists = (usersTierLists) => ({
-    type: 'GET_USERS_TIER_LISTS',
-    usersTierLists
+export const getMyTierLists = (myTierLists) => ({
+    type: 'GET_MY_TIER_LISTS',
+    myTierLists
 })
 
-export const startGetAllUsersTierList = () => {
+export const startGetAllMyTierList = () => {
     return (dispatch, getState) => {
         const uid = getState().auth.uid;
-        const usersTierLists = [];
+        const myTierLists = [];
         const tierListRef = db.collection('tierLists')
-        return tierListRef.where("userId", "==", uid)
+        tierListRef.where("tierList.userId", "==", uid)
         .get()
         .then((querySnapshot) => {
-            console.log(querySnapshot)
-            console.log(uid)
             querySnapshot.forEach((doc) => {
-                console.log(doc)
-                usersTierLists.push(doc)
-                dispatch(getUsersTierLists(usersTierLists))
-            })
-        })
-    }
-}
+                myTierLists.push({id: doc.id + 1, ...doc.data().tierList})
+            });
+            dispatch(getMyTierLists(myTierLists));
+        });
+    };
+};
 
+export const getMyUserTierLists = (myUserTierLists) => ({
+    type: 'GET_MY_USER_TIER_LISTS',
+    myUserTierLists
+})
+
+export const startGetAllMyUserTierList = () => {
+    return (dispatch, getState) => {
+        const uid = getState().auth.uid;
+        const myUserTierLists = [];
+        const tierListRef = db.collection('userTierLists')
+        tierListRef.where("userTierList.userId", "==", uid)
+        .get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                myUserTierLists.push(doc.data().userTierList);
+            });
+            dispatch(getMyTierLists(myUserTierLists));
+        });
+    };
+};
 
 //ADD TIER LISTS

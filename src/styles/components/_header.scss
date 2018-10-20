@@ -1,5 +1,5 @@
 .header {
-  background: $cape-cod;
+  background: $slated;
   border-radius: 2.5px;
   margin: 0.5px;
   box-shadow: 3px 3px 2px $dark-grey;
@@ -14,10 +14,16 @@
 }
 
 .header__title {
-  color: $alabaster;
+  color: white;
   font-size: 3rem;
   text-decoration: none;
   h1 {
     margin: 0;
+  }
+}
+
+@include breakpoint(mobileonly) {
+  .header__title {
+    font-size: 1.5rem;
   }
 }

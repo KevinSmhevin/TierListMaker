@@ -19,16 +19,22 @@ export class ViewTierListPage extends React.Component {
         let competitorFields = [];
         const competitors = this.props.tierList.listOfCompetitors
         for (let keys in competitors) {
-            competitorFields.push(<p key={keys}>{keys}: {competitors[keys]}</p>)
+            competitorFields.push(<p className="view-competitor" key={keys}>{competitors[keys]}</p>)
         }
         return (
-            <div>
-                <h2>{this.props.tierList.title}</h2>
-                <p>{this.props.tierList.description}</p>
+            <div className="container view-tier-list-container">
+                <section className="header-container">
+                    <h2 className="view-tier-list-title">{this.props.tierList.title}</h2>
+                    <p className="view-tier-list-description">{this.props.tierList.description}</p>
+                </section>
+                <section className="competitor-container">
                 {competitorFields}
-                <button onClick={this.onUpdateTierList}>Update Tier List</button>
-                <button onClick={this.onTierListEdit}>Edit Tier List</button>
-                <button onClick={this.onRemoveTierList}>Remove Tier List</button>
+                </section>
+                <section className="button-container">
+                    <button className="view-button button" onClick={this.onUpdateTierList}>Update Tier List</button>
+                    <button className="view-button button" onClick={this.onTierListEdit}>Edit Tier List</button>
+                    <button className="view-button button" onClick={this.onRemoveTierList}>Remove Tier List</button>
+                </section>
             </div>
         )
     }

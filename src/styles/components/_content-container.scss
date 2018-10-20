@@ -3,3 +3,12 @@
   padding: 0 $s-size;
   max-width: 80rem;
 }
+
+.container {
+  margin: $m-size;
+  background: $slated;
+  color: $alabaster;
+  box-shadow: 3px 3px 2px $dark-grey;
+  padding: $l-size $m-size;
+  border-radius: 5px;
+}

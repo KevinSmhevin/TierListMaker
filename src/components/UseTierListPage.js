@@ -5,10 +5,6 @@ import { TierListColumn }  from './TierListColumn';
 import styled from 'styled-components';
 import { startCreateUserTierList, startUpdateUserTierList } from '../actions/tierList';
 
-const Container = styled.div`
-dislay: flex;
-`
-
 export class UseTierListPage extends React.Component {
     constructor(props) {
         super(props);
@@ -77,6 +73,7 @@ export class UseTierListPage extends React.Component {
     };
     onSubmit = (e) => {
         e.preventDefault();
+        console.log(this.state.columns)
         const updates = {
             title: this.state.title,
             columnOrder: this.state.columnOrder,
@@ -86,7 +83,7 @@ export class UseTierListPage extends React.Component {
             tierListId: this.state.id
         }
         if (this.props.userTierList) {
-            this.props.startCreateUserTierList(updates)
+            this.props.startUpdateUserTierList(updates)
         } else {
             console.log('hi')
             this.props.startCreateUserTierList(updates)
@@ -100,21 +97,21 @@ export class UseTierListPage extends React.Component {
                 onDragEnd={this.onDragEnd}
                 onDragStart={this.onDragStart}
             >
-            <Container>
-            <form onSubmit={this.onSubmit}>
-                {this.state.columnOrder.map(columnId => {
-                    const column = this.state.columns[columnId];
-                    const competitor = column.competitorIds.map((competitorId) => {
-                        for (let keys in this.listOfCompetitors) {
-                        const competitorId = keys;
-                        }
-                        return competitorId
-                    })
-                    return (<TierListColumn key={column.id} column={column} competitors={competitor} tierList={this.state} />);
-                })}
-            <button>Save Tier List</button>
-            </form>
-            </Container>
+                <div className="drag-drop-container">
+                    <form onSubmit={this.onSubmit}>
+                        {this.state.columnOrder.map(columnId => {
+                            const column = this.state.columns[columnId];
+                            const competitor = column.competitorIds.map((competitorId) => {
+                                for (let keys in this.listOfCompetitors) {
+                                const competitorId = keys;
+                                }
+                                return competitorId
+                            })
+                            return (<TierListColumn key={column.id} column={column} competitors={competitor} tierList={this.state} />);
+                        })}
+                        <button className="user button">Save Tier List</button>
+                    </form>
+                </div>
             </DragDropContext>
         )
     }

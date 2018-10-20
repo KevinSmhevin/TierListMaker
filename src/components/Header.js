@@ -12,7 +12,7 @@ export const Header = ({ isAuthenticated, startLogout, startLogin }) => (
         <Link className="header__title" to="/dashboard">
           <h1>Tier List Maker</h1>
         </Link>
-        <button className="button" onClick={startLogout}>Logout</button>
+        <button className="nav button" onClick={startLogout}>Logout</button>
       </div>
     </div>
   </header>
@@ -23,7 +23,7 @@ export const Header = ({ isAuthenticated, startLogout, startLogin }) => (
         <Link className="header__title" to="/dashboard">
           <h1>Tier List Maker</h1>
         </Link>
-        <button className="button button--link" onClick={startLogin}>Login</button>
+        <button className="nav button" onClick={startLogin}>Login</button>
       </div>
     </div>
   </header>

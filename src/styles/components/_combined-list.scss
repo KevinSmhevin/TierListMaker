@@ -8,7 +8,7 @@
 }
 
 .combined-tier-list-box {
-    background: $nevada;
+    background: $slated;
     border-radius: 2.5px;  
     box-shadow: 3px 3px 2px $dark-grey;
     padding: $l-size $m-size;
@@ -19,28 +19,40 @@
   }
 
 .box-title {
-    font-size: $xl-size;
+    font-size: 2.5rem;
 }
 
 .tier-list-row {
     border: solid $cape-cod 1px;
+    background: $alabaster;
     box-shadow: 3px 3px 2px $dark-grey;
     border-radius: 2.5px;
     margin: $xs-size;
+    color: $cool-grey;
+    padding: $m-size;
 }
 
 .tier-list-title {
     color: $heathered-gray;
-    font-size: $ml-size;
+    font-size: 2rem;
+}
+
+.tier-list-title:hover{
+    color: #968f7c;
 }
 
 .tier-list-text {
-    font-size: $xs-size;
+    font-size: 1rem;
 }
 
 @include breakpoint(mobileonly) {
     .combined-tier-list-container {
         flex-direction: column;
     }
-
+    .box-title {
+        font-size: 2rem;
+    }
+    .tier-list-title {
+        font-size: 1.5rem
+    }
 }
