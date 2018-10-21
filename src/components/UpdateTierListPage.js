@@ -8,7 +8,7 @@ export class UpdateTierListPage extends React.Component {
         super(props);
     }
     onSubmit = (tierList) => {
-        this.props.startUpdateTierList(this.props.tierList.id, tierList);
+        this.props.startUpdateTierList(this.props.tierList.id, {displayName: this.props.auth.displayName, userId: this.props.auth.uid, ...tierList});
         this.props.history.push('/');
       };
         render() {
