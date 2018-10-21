@@ -6,7 +6,6 @@ export default (state = tierListReducerDefaultState, action) => {
           return state.filter(({ id }) => id === action.id);
         case 'GET_TIER_LISTS':
         state = action.tierLists;
-        console.log(state)
         return state
         case 'GET_MY_TIER_LISTS':
         state = action.myTierLists;

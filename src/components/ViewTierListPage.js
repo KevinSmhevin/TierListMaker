@@ -21,6 +21,22 @@ export class ViewTierListPage extends React.Component {
         for (let keys in competitors) {
             competitorFields.push(<p className="view-competitor" key={keys}>{competitors[keys]}</p>)
         }
+        let userButtons = '';
+        if (this.props.auth.uid === this.props.tierList.userId) {
+            userButtons = (
+                <section className="button-container">
+                    <button className="view-button button" onClick={this.onUpdateTierList}><i className="fas fa-pen"></i> Update Tier List</button>
+                    <button className="view-button button" onClick={this.onTierListEdit}>Use Tier List</button>
+                    <button className="view-button button" onClick={this.onRemoveTierList}><i className="fas fa-times-circle"></i> Remove Tier List</button>
+                </section>
+            ) 
+        } else {
+            userButtons = (
+                <section className="single-button">
+                    <button className="view-button button" onClick={this.onTierListEdit}>Use Tier List</button>
+                </section>
+            )
+        }
         return (
             <div className="container view-tier-list-container">
                 <section className="header-container">
@@ -30,11 +46,8 @@ export class ViewTierListPage extends React.Component {
                 <section className="competitor-container">
                 {competitorFields}
                 </section>
-                <section className="button-container">
-                    <button className="view-button button" onClick={this.onUpdateTierList}>Update Tier List</button>
-                    <button className="view-button button" onClick={this.onTierListEdit}>Edit Tier List</button>
-                    <button className="view-button button" onClick={this.onRemoveTierList}>Remove Tier List</button>
-                </section>
+                {userButtons}
+                
             </div>
         )
     }

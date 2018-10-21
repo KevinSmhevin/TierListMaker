@@ -10,9 +10,9 @@ export const Header = ({ isAuthenticated, startLogout, startLogin }) => (
     <div className="content-container">
       <div className="header__content">
         <Link className="header__title" to="/dashboard">
-          <h1>Tier List Maker</h1>
+          <h1><i className="fas fa-list-alt"></i> Tier List Maker</h1>
         </Link>
-        <button className="nav button" onClick={startLogout}>Logout</button>
+        <button className="nav button" onClick={startLogout}><i className="fas fa-sign-out"></i> Logout</button>
       </div>
     </div>
   </header>
@@ -21,9 +21,9 @@ export const Header = ({ isAuthenticated, startLogout, startLogin }) => (
     <div className="content-container">
       <div className="header__content">
         <Link className="header__title" to="/dashboard">
-          <h1>Tier List Maker</h1>
+          <h1><i className="fas fa-list-alt"></i> Tier List Maker</h1>
         </Link>
-        <button className="nav button" onClick={startLogin}>Login</button>
+        <button className="nav button" onClick={startLogin}><i className="fas fa-sign-in"></i> Login</button>
       </div>
     </div>
   </header>

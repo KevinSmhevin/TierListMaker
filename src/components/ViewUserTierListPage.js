@@ -104,6 +104,15 @@ export class ViewUserTierListPage extends React.Component {
         for (let keys in competitors) {
             competitorFields.push(<p key={keys}>{keys}: {competitors[keys]}</p>)
         }
+        let userButtons = ''
+        if (this.props.auth.uid === this.props.userTierList.userId) {
+            userButtons = (
+                <div>
+                 <button className="user button"><i className="fas fa-save"></i> Save Changes</button>
+                <button className="user button" onClick={this.onRemoveUserTierList}><i className="fas fa-times-circle"></i> Delete Tierlist</button>
+                </div>
+            );
+        };
         return (
             <DragDropContext 
                 onDragEnd={this.onDragEnd}
@@ -111,8 +120,7 @@ export class ViewUserTierListPage extends React.Component {
             >
             <div className="drag-drop-container">
             <form onSubmit={this.onSubmit}>
-                <button className="user button">Save Changes</button>
-                <button className="user button" onClick={this.onRemoveUserTierList}>Delete Tierlist</button>
+               {userButtons}
                 {this.state.columnOrder.map(columnId => {
                     const column = this.state.columns[columnId];
                     const competitor = column.competitorIds.map((competitorId) => {

@@ -12,7 +12,7 @@ export class DashboardPage extends React.Component {
   render() {
     return (  
       <div>
-        <NavLink to="/create" className="create side button">Create Tier List</NavLink>
+        <NavLink to="/create" className="create side button"> <i className="fas fa-plus-circle"></i> Create Tier List</NavLink>
           <CombinedList />
       </div>
     )

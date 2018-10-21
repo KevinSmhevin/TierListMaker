@@ -173,6 +173,7 @@ export const updateUserTierList = (id, updates) => ({
 
 export const startUpdateTierList = (id, updates ) => {
     return (dispatch) => {
+        console.log(updates)
         return db.collection('tierLists').doc(id).update(updates).then(() => {
             dispatch(updateTierList(id, updates))
         });
@@ -181,12 +182,12 @@ export const startUpdateTierList = (id, updates ) => {
 
 export const startUpdateUserTierList = (id, updates) => {
     return (dispatch) => {
-        const userTierListUpdates = {updates}
+        const userTierListUpdates = {userTierList:updates}
         console.log(userTierListUpdates.updates)
         const userTierList = db.collection('userTierLists').doc(id)
-        return userTierList.update(userTierListUpdates.updates).then(() => {
-            console.log(userTierListUpdates.updates)
-            dispatch(updateUserTierList(id, userTierListUpdates.updates))
+        return userTierList.update(userTierListUpdates).then(() => {
+            console.log(userTierListUpdates.userTierList)
+            dispatch(updateUserTierList(id, userTierListUpdates.userTierList))
         })
     }
 }

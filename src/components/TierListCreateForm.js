@@ -67,6 +67,7 @@ export default class TierListCreateForm extends React.Component {
         return (
             <div className="form-container">
                <form className="form" onSubmit={this.onSubmit}>
+               {this.state.error && <p className="error">{this.state.error}</p>}
                <h3 className="form-title">Tier List Creation Form</h3>
                 <input
                   className="input-title"
@@ -82,6 +83,7 @@ export default class TierListCreateForm extends React.Component {
                   value={this.state.description}
                   onChange={this.onDescriptionChange}
                 />
+                <label>Number Of Competition</label>
                 <InputNumber 
                   value={this.state.numberOfCompetition}
                   min={1} 
@@ -95,7 +97,7 @@ export default class TierListCreateForm extends React.Component {
                 <div className="competitor-fields">
                 {competitorFields}
                 </div>
-                <button className="create button">Create</button>
+                <button className="create button"><i className="fas fa-plus-circle"></i> Create</button>
                </form>
             </div>
         
