@@ -1,4 +1,5 @@
 import React from 'react';
+import uuid from 'uuid'
 import { connect } from 'react-redux';
 import TierListRow from './TierListRow';
 import UserTierListRow from './UserTierListRow';
@@ -14,7 +15,7 @@ export class CombinedList extends React.Component {
                         <p>No Tier Lists</p>
                     ) : (
                         this.props.userTierList.map((userTierList) => {
-                                return <UserTierListRow key={userTierList.tierListId} {...userTierList} />
+                                return <UserTierListRow key={uuid()} {...userTierList} />
                         })
                     )
                 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import InputNumber from 'rc-input-number';
+import uuid from 'uuid';
 
 export default class TierListCreateForm extends React.Component {
     constructor(props) {
@@ -59,7 +60,7 @@ export default class TierListCreateForm extends React.Component {
           type="text" 
           placeholder="Competitor Name"
           value={this.state.listOfCompetitors[i]}
-          key={"competitor: " + i} 
+          key={uuid()} 
           data-competitor={i}
           onChange={this.onCompetitorFieldsChange}
          />);

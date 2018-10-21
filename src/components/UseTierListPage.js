@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { TierListColumn }  from './TierListColumn';
-import styled from 'styled-components';
 import { startCreateUserTierList, startUpdateUserTierList } from '../actions/tierList';
 
 export class UseTierListPage extends React.Component {
