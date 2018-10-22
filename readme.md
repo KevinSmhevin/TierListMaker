@@ -1,7 +1,31 @@
-# Git Commands
+Tier List Maker 
+-------------------------------------------------------------------------------------
+https://stormy-coast-89569.herokuapp.com/
 
-git init - Create a new git repo
-git status - View the changes to your project code
-git add - Add files to staging area
-git commit - Creates a new commit with files from staging area
-git log - View recent commits
+An app that lets you create your own rating list or "tier list" using the Japanese S to F grading system.
+
+You must user your google acount to login
+
+Features
+
+Available for all users:
+  - View all tier list templates and used tier list on the landing page
+  - Login your google account to access the dashboard page
+  - View individual tier list templates and used tier list 
+  
+Available for logged in users:
+  - View your own dashboard page that allows you to create your own tier list templates
+  - use other users tier list templates with your own opinions
+  - update and delete your tier list templates
+  
+Technologies used:
+    - Javascript
+    - React
+    - Redux
+    - Firebase
+    - Webpack
+    - Node
+    - Express
+    - HTML/CSS
+    
+ 
