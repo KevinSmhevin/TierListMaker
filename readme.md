@@ -19,13 +19,13 @@ Available for logged in users:
   - update and delete your tier list templates
   
 Technologies used:
-    - Javascript
-    - React
-    - Redux
-    - Firebase
-    - Webpack
-    - Node
-    - Express
-    - HTML/CSS
+   - Javascript
+   - React
+   - Redux
+   - Firebase
+   - Webpack
+   - Node
+   - Express
+   - HTML/CSS
     
  
