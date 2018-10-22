@@ -1,8 +1,14 @@
 import React from 'react';
+import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { TierListColumn }  from './TierListColumn';
 import { startCreateUserTierList, startUpdateUserTierList } from '../actions/tierList';
+
+const Container = styled.div`
+    color: #374744;;
+    display: flex;
+`
 
 export class UseTierListPage extends React.Component {
     constructor(props) {
@@ -94,7 +100,7 @@ export class UseTierListPage extends React.Component {
                 onDragEnd={this.onDragEnd}
                 onDragStart={this.onDragStart}
             >
-                <div className="drag-drop-container">
+                <Container>
                     <form onSubmit={this.onSubmit}>
                         {this.state.columnOrder.map(columnId => {
                             const column = this.state.columns[columnId];
@@ -108,7 +114,7 @@ export class UseTierListPage extends React.Component {
                         })}
                         <button className="user button">Save Tier List</button>
                     </form>
-                </div>
+                </Container>
             </DragDropContext>
         )
     }
@@ -117,7 +123,6 @@ export class UseTierListPage extends React.Component {
 
 const mapStateToProps = (state, props) => {
     const uid = state.auth.uid
-    console.log(state)
     return {
         tierList: state.tierList.find((tierList) => tierList.id === props.match.params.id),
         userTierList: state.userTierList.find((userTierList) => {

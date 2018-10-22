@@ -34,7 +34,7 @@ export const startGetAllUserTierList = () => {
             });
             dispatch(getUserTierLists(userTierLists));
         });
-    }
+    };
 }
 
 export const createTierList = (tierList) => ({
@@ -100,8 +100,8 @@ export const startCreateTierList = ( tierListData = {} ) => {
         const tierList = { title, description, numberOfCompetition, listOfCompetitors, columns, columnOrder, userId, displayName }
         const newTierList = db.collection('tierLists');
         return newTierList.add({tierList}).then((snapshot) => {
-        tierList.id = snapshot.id
-        dispatch(createTierList(tierList));
+            tierList.id = snapshot.id;
+            dispatch(createTierList(tierList));
        });
     }
  }
@@ -120,12 +120,12 @@ export const startCreateTierList = ( tierListData = {} ) => {
              tierListId = '',
              userId = uid,
          } = userTierListData
-         const userTierList = { title, description, listOfCompetitors, columns, columnOrder, tierListId, userId, displayName }
+         const userTierList = { title, description, listOfCompetitors, columns, columnOrder, tierListId, userId, displayName };
          const userTierListDocument = db.collection('userTierLists');
          return userTierListDocument.add({userTierList}).then((snapshot) => {
              userTierList.id = snapshot.id;
-             dispatch(createUserTierList(userTierList))
-         })
+             dispatch(createUserTierList(userTierList));
+         });
     }
  }
 
@@ -152,8 +152,8 @@ export const startRemoveTierList = (id) => {
 export const startRemoveUserTierList = (id) => {
     return (dispatch) => {
         return db.collection('userTierLists').doc(id).delete().then(() => {
-            dispatch(removeUserTierList(id))
-        })
+            dispatch(removeUserTierList(id));
+        });
     };
 };
 
@@ -176,15 +176,14 @@ export const startUpdateTierList = (id, updates ) => {
         console.log(updates)
         const tierListUpdates = {tierList:updates}
         return db.collection('tierLists').doc(id).update(tierListUpdates).then(() => {
-            dispatch(updateTierList(id, tierListUpdates.tierList))
+            dispatch(updateTierList(id, tierListUpdates.tierList));
         });
     };
 };
 
 export const startUpdateUserTierList = (id, updates) => {
     return (dispatch) => {
-        const userTierListUpdates = {userTierList:updates}
-        console.log(userTierListUpdates.updates)
+        const userTierListUpdates = {userTierList:updates};
         const userTierList = db.collection('userTierLists').doc(id)
         return userTierList.update(userTierListUpdates).then(() => {
             dispatch(updateUserTierList(id, userTierListUpdates.userTierList))
@@ -206,7 +205,7 @@ export const startGetAllMyTierList = () => {
         .get()
         .then((querySnapshot) => {
             querySnapshot.forEach((doc) => {
-                myTierLists.push({id: doc.id + 1, ...doc.data().tierList})
+                myTierLists.push({id: doc.id, ...doc.data().tierList})
             });
             dispatch(getMyTierLists(myTierLists));
         });

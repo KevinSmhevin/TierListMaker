@@ -21,7 +21,7 @@ export class TierListColumn extends React.Component {
                             {this.props.competitors.map((competitor, index) => {
                                 const competitorId = parseInt(competitor)
                                 return <Competitor 
-                                            key={uuid()} 
+                                            key={competitorId} 
                                             id={competitorId}
                                             tierList={this.props.tierList} 
                                             competitor={this.props.tierList.listOfCompetitors[competitorId]} 

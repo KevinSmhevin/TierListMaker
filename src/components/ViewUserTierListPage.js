@@ -5,14 +5,12 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import { TierListColumn }  from './TierListColumn';
 import { startCreateUserTierList, startUpdateUserTierList } from '../actions/tierList';
 
+
 export class ViewUserTierListPage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {...props.userTierList};
     }
-    onDragStart = () => {
-    }
-
     onDragEnd = result => {
         const { destination, source , draggableId } = result;
         if (!destination) {
