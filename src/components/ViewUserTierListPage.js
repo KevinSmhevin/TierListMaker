@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { startRemoveUserTierList } from '../actions/tierList';
 import { DragDropContext } from 'react-beautiful-dnd';
 import { TierListColumn }  from './TierListColumn';
-import styled from 'styled-components';
 import { startCreateUserTierList, startUpdateUserTierList } from '../actions/tierList';
 
 export class ViewUserTierListPage extends React.Component {
@@ -12,11 +11,9 @@ export class ViewUserTierListPage extends React.Component {
         this.state = {...props.userTierList};
     }
     onDragStart = () => {
-        document.body.style.color = 'blue';
     }
 
     onDragEnd = result => {
-        document.body.style.color = 'black';
         const { destination, source , draggableId } = result;
         if (!destination) {
             return;
