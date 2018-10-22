@@ -43,7 +43,6 @@ export class UseTierListPage extends React.Component {
                 },
             };
             this.setState(newTierList)
-            console.log(this.state)
             return;
         }
         const startCompetitorIds = Array.from(start.competitorIds);
@@ -72,7 +71,7 @@ export class UseTierListPage extends React.Component {
     };
     onSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state.columns)
+
         const updates = {
             title: this.state.title,
             columnOrder: this.state.columnOrder,
@@ -84,7 +83,6 @@ export class UseTierListPage extends React.Component {
         if (this.props.userTierList) {
             this.props.startUpdateUserTierList(updates)
         } else {
-            console.log('hi')
             this.props.startCreateUserTierList(updates)
         }
         this.props.history.push('/')
