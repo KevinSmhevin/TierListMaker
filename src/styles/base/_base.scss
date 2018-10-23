@@ -18,9 +18,9 @@ html {
 
 #app::after {
   content: "";
-  background: url('/images/crossed.png') bottom center fixed;
-  opacity: 0.85;
-  top: 0;
+  background: url('/images/crossed.png');
+  opacity: 0.9;
+  top: 0; 
   left: 0;
   bottom: 0;
   right: 0;
