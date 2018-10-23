@@ -29,5 +29,5 @@ Technologies used:
    - HTML/CSS
     
 Test Account:
-    - username: testpenguin555111@gmail.com
-    - password: googleyes999
+  - username: testpenguin555111@gmail.com
+  - password: googleyes999
