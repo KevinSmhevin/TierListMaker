@@ -13,6 +13,7 @@ export class DashboardPage extends React.Component {
     return (  
       <div>
         <NavLink to="/create" className="create side button"> <i className="fas fa-plus-circle"></i> Create Tier List</NavLink>
+        <NavLink to="/getting-started" className="create side button"><i class="fas fa-question-circle"></i> Getting Started</NavLink>
           <CombinedList />
       </div>
     )

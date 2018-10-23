@@ -13,6 +13,7 @@ import UseTierListPage from '../components/UseTierListPage';
 import ViewUserTierListPage from '../components/ViewUserTierListPage';
 import UpdateTierListPage from '../components/UpdateTierListPage';
 import GuestRoute from './GuestRoute'
+import { GettingStartedPage } from '../components/GettingStartedPage';
 
 export const history = createHistory();
 
@@ -25,6 +26,7 @@ const AppRouter = () => (
         <PrivateRoute path="/create" component={CreateTierListPage} />
         <PrivateRoute path="/dashboard" component={DashboardPage} />
         <GuestRoute path="/view/:id" component={ViewTierListPage} />
+        <GuestRoute path="/getting-started" component={GettingStartedPage} />
         <PrivateRoute path="/edit/:id" component={UseTierListPage} />
         <GuestRoute path="/viewTierList/:id" component={ViewUserTierListPage} />
         <PrivateRoute path="/update/:id" component={UpdateTierListPage} /> 

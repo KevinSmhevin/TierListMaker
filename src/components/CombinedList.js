@@ -9,7 +9,7 @@ export class CombinedList extends React.Component {
         return (
             <div className="combined-tier-list-container">
                 <div className="combined-tier-list-box">
-                <h2 className="box-title">Tier lists</h2>
+                <h2 className="box-title"><i class="fas fa-bars"></i> Tier lists</h2>
                 {
                     this.props.userTierList.length === 0 ? (
                         <p>No Tier Lists</p>
@@ -21,7 +21,7 @@ export class CombinedList extends React.Component {
                 }
                 </div>
                 <div className="combined-tier-list-box">
-                <h2 className="box-title">Templates</h2>
+                <h2 className="box-title"><i class="fas fa-th-large"></i> Templates</h2>
                 {
                     this.props.tierLists.length === 0 ? (
                         <p>No Tier List Templates</p>

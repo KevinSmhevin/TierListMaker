@@ -11,24 +11,8 @@ import 'react-dates/lib/css/_datepicker.css';
 import { firebase } from './firebase/firebase';
 import LoadingPage from './components/LoadingPage';
 
-
-// import { createTierList, setCreateTierList, updateTierList, startUpdateTierList, setRemoveTierList } from './actions/tierList';
-// import { setTextFilter } from './actions/filters';
-// import getVisibleTierLists from './selectors/tierLists'
-
 const store = configureStore();
 
-// temporary content ********
-
-//  store.dispatch(setCreateTierList({ title: 'League', description: 'champions', numberOfCompetition: 1, competitorList: {} }))
-
-// store.dispatch(setTextFilter('Le'))
-
-// const visibleTierLists = getVisibleTierLists(state.tierList, state.filters);
-
-// console.log(visibleTierLists)
-
-//  end of temporary content
 const jsx = (
   <Provider store={store}>
     <AppRouter />

@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Route, Redirect } from 'react-router-dom';
 import { startLogout, startLogin } from '../actions/auth';
 
 export const Header = ({ isAuthenticated, startLogout, startLogin }) => (
@@ -12,7 +11,7 @@ export const Header = ({ isAuthenticated, startLogout, startLogin }) => (
         <Link className="header__title" to="/dashboard">
           <h1><i className="fas fa-list-alt"></i> Tier List Maker</h1>
         </Link>
-        <button className="nav button" onClick={startLogout}><i className="fas fa-sign-out"></i> Logout</button>
+        <button className="nav button" onClick={startLogout}> <i class="fas fa-sign-out-alt"></i> Logout</button>
       </div>
     </div>
   </header>
@@ -23,7 +22,7 @@ export const Header = ({ isAuthenticated, startLogout, startLogin }) => (
         <Link className="header__title" to="/dashboard">
           <h1><i className="fas fa-list-alt"></i> Tier List Maker</h1>
         </Link>
-        <button className="nav button" onClick={startLogin}><i className="fas fa-sign-in"></i> Login</button>
+        <button className="nav button" onClick={startLogin}> <i class="fas fa-sign-in-alt"></i> Login</button>
       </div>
     </div>
   </header>

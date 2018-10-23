@@ -26,7 +26,7 @@ export class ViewTierListPage extends React.Component {
             userButtons = (
                 <section className="button-container">
                     <button className="view-button button" onClick={this.onUpdateTierList}><i className="fas fa-pen"></i> Update Tier List</button>
-                    <button className="view-button button" onClick={this.onTierListEdit}>Use Tier List</button>
+                    <button className="view-button button" onClick={this.onTierListEdit}><i class="fas fa-pen-square"></i> Use Tier List</button>
                     <button className="view-button button" onClick={this.onRemoveTierList}><i className="fas fa-times-circle"></i> Remove Tier List</button>
                 </section>
             ) 

@@ -1,11 +1,12 @@
 import React from 'react';
 import Header from './Header';
+import { NavLink } from 'react-router-dom';
 import CombinedList from './CombinedList';
 
 const LandingPage = () => (
   <div>
     <Header />
-    <h3>Sign in to get started!</h3>
+    <NavLink to="/getting-started" className="create side button"><i class="fas fa-question-circle"></i> Getting Started</NavLink>
     <CombinedList />
   </div>
 );
