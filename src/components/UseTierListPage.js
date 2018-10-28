@@ -6,7 +6,7 @@ import { TierListColumn }  from './TierListColumn';
 import { startCreateUserTierList, startUpdateUserTierList } from '../actions/tierList';
 
 const Container = styled.div`
-    color: #374744;;
+    color: #374744;
     display: flex;
 `
 

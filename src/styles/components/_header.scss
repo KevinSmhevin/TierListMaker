@@ -1,12 +1,12 @@
 .header {
-  background: $slated;
+  background: whitesmoke;
   border-radius: 2.5px;
   margin: 0.5px;
   box-shadow: 3px 3px 2px $dark-grey;
 }
 
 .header__content {
-  color: $alabaster;
+  color: $outer-space;
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -14,7 +14,7 @@
 }
 
 .header__title {
-  color: white;
+  color: $crisp-red;
   font-size: 3rem;
   text-decoration: none;
   h1 {

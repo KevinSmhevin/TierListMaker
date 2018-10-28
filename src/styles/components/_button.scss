@@ -1,5 +1,5 @@
 .button {
-  color: $alabaster;
+  color: $crisp-red;
   border: none;
   display: inline-block;
   text-align: center;
@@ -10,20 +10,21 @@
 }
 
 .nav {
-  background: $smooth-blue;
+  background: $crisp-red;
+  color: $new-white;
   border-radius: 30px;
   font-size: 1.5rem
 }
 
 .nav:hover {
-  background: #245ea5
+  background: #c16147;
 }
 
 .create {
   border-radius: 5px;
   padding: $m-size;
   font-size: 2rem;
-  color: $cape-cod;
+  color: $crisp-red;
   background: $alabaster;
 }
 
@@ -35,23 +36,23 @@
   font-size: 1.2rem;
   border-radius: 5px;
   margin: $xs-size;
-  background: $nevada;
+  background: white;
 }
 
 .view-button:hover {
-  background: #4a555b;
+  background: $new-white;
 }
 
 .user {
   color: $alabaster;
-  background: $smooth-blue;
+  background: $crisp-red;
   border: 1px solid $alabaster;
   border-radius: 5px;
   margin: $m-size;
 }
 
 .user:hover {
-  background: #245ea5;
+  background: #c16147;
 }
 
 

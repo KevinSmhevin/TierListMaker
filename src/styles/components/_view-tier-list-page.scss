@@ -8,20 +8,20 @@
     margin: auto auto $ml-size auto;
     width: 60%;
     padding: $m-size;
-    background: $nevada;
+    background: white;
     border-radius: 5px;
 }
 
 .view-tier-list-title {
     font-size: 2rem;
     text-align: center;
-    color: $heathered-gray;
+    color: $crisp-red;
 }
 
 .view-tier-list-description {
     font-size: 1.6rem;
     text-align: center;
-    color: $alabaster;
+    color: gray;
 }
 
 @include breakpoint(mobileonly) {
@@ -39,7 +39,7 @@
       justify-content: center;
       text-align: center;
       background: $alabaster;
-      color: $cape-cod;
+      color: gray;
       padding: $m-size;
       border-radius: 5px;
   }

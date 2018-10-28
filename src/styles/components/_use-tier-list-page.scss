@@ -1,19 +1,19 @@
 .drag-drop-container {
-    color: $cape-cod;
+    color: $crisp-red;
     display: flex;
 }
 
 .column-container {
-    background: $nevada;
+    background: white;
     margin: 8px 15px 8px 8px;
-    border: 1px dashed lightgrey;
+    border: 1px solid $revolver;
     border-radius: 5px;
     min-height: 7.5rem;
     display: flex;
 }
 
 .column-title {
-    color: $heathered-gray;
+    color: $crisp-red;
     font-size: 2.5rem;
     padding: 8px;
 }

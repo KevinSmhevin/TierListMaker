@@ -8,13 +8,13 @@
 }
 
 .combined-tier-list-box {
-    background: $slated;
+    background: $crisp-red;
     border-radius: 2.5px;  
     box-shadow: 3px 3px 2px $dark-grey;
     padding: $l-size $m-size;
     text-align: center;
     min-width: 25rem;
-    color: $alabaster;
+    color: white;
     margin: 5px;
   }
 
@@ -28,17 +28,17 @@
     box-shadow: 3px 3px 2px $dark-grey;
     border-radius: 2.5px;
     margin: $xs-size;
-    color: $cool-grey;
+    color: $revolver;
     padding: $m-size;
 }
 
 .tier-list-title {
-    color: $heathered-gray;
+    color: $crisp-red;
     font-size: 2rem;
 }
 
 .tier-list-title:hover{
-    color: #968f7c;
+    color: #c16147;
 }
 
 .tier-list-text {
