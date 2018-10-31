@@ -60,7 +60,7 @@ export default class TierListCreateForm extends React.Component {
           type="text" 
           placeholder="Competitor Name"
           value={this.state.listOfCompetitors[i]}
-          key={uuid()} 
+          key={i} 
           data-competitor={i}
           onChange={this.onCompetitorFieldsChange}
          />);
@@ -105,5 +105,3 @@ export default class TierListCreateForm extends React.Component {
         )
     }
 } 
-
-{/* <img src="/images/up.png"></img>  */}
