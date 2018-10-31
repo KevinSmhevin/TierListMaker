@@ -1,14 +1,11 @@
 .combined-tier-list-container {
     display: flex;
-    align-items: flex-start;
-    flex-direction: row;
-    height: 100%;
     width: 100%;
     justify-content: space-around;
 }
 
 .combined-tier-list-box {
-    background: $crisp-red;
+    background: $blue;
     border-radius: 2.5px;  
     box-shadow: 3px 3px 2px $dark-grey;
     padding: $l-size $m-size;
@@ -33,12 +30,12 @@
 }
 
 .tier-list-title {
-    color: $crisp-red;
+    color: $blue;
     font-size: 2rem;
 }
 
 .tier-list-title:hover{
-    color: #c16147;
+    color: $smooth-blue;
 }
 
 .tier-list-text {

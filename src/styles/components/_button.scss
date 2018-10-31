@@ -1,5 +1,5 @@
 .button {
-  color: $crisp-red;
+  color: $blue;
   border: none;
   display: inline-block;
   text-align: center;
@@ -10,21 +10,21 @@
 }
 
 .nav {
-  background: $crisp-red;
+  background: $blue;
   color: $new-white;
   border-radius: 30px;
   font-size: 1.5rem
 }
 
 .nav:hover {
-  background: #c16147;
+  background: $smooth-blue;
 }
 
 .create {
   border-radius: 5px;
   padding: $m-size;
   font-size: 2rem;
-  color: $crisp-red;
+  color: $blue;
   background: $alabaster;
 }
 
@@ -45,14 +45,14 @@
 
 .user {
   color: $alabaster;
-  background: $crisp-red;
+  background: $blue;
   border: 1px solid $alabaster;
   border-radius: 5px;
   margin: $m-size;
 }
 
 .user:hover {
-  background: #c16147;
+  background: $smooth-blue;
 }
 
 

@@ -1,10 +1,16 @@
 .drag-drop-container {
-    color: $crisp-red;
+    color: $blue;
     display: flex;
 }
 
 .column-container {
-    background: white;
+    background: repeating-linear-gradient(
+        45deg,
+        white,
+        white 5px,
+        whitesmoke 5px,
+        whitesmoke 10px,
+    );
     margin: 8px 15px 8px 8px;
     border: 1px solid $revolver;
     border-radius: 5px;
@@ -13,7 +19,7 @@
 }
 
 .column-title {
-    color: $crisp-red;
+    color: $blue;
     font-size: 2.5rem;
     padding: 8px;
 }

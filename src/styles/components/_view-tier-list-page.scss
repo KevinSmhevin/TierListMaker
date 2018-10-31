@@ -15,7 +15,7 @@
 .view-tier-list-title {
     font-size: 2rem;
     text-align: center;
-    color: $crisp-red;
+    color: $blue;
 }
 
 .view-tier-list-description {
@@ -24,11 +24,6 @@
     color: gray;
 }
 
-@include breakpoint(mobileonly) {
-    .view-tier-list-container {
-      width: 80%;
-    }
-  }
 
   .competitor-container {
       display: flex; 
@@ -62,11 +57,17 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+
+
   }
+  
   @include breakpoint(mobileonly) {
+    .view-tier-list-container {
+      width: 80%;
+    }
     .button-container {
         flex-direction: column;
         justify-content: center;
         width: 100%;
     }
-}
+  }

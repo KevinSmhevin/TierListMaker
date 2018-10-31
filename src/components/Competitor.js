@@ -9,7 +9,7 @@ margin-right: 8px;
 padding: 12px;
 margin-bottom: 8px;
 color: white;
-background-color: ${props => (props.isDragging ? '#964d39' : '#964d39')}
+background-color: ${props => (props.isDragging ? '#327dde' : '#1c88bf')}
 `;
 
 export class Competitor extends React.Component {
