@@ -1,9 +1,11 @@
 .getting-started-container {
     margin: $m-size auto;
-    width: 60%;
     text-align: center;
+    width: 40%;
 }
 
-.getting-started-title {
-    color: white;
-}
+@include breakpoint(mobileonly) {
+    .getting-started-container {
+        width: 80%;
+    }
+  }
