@@ -38,12 +38,12 @@ export class ViewTierListPage extends React.Component {
             )
         }
         return (
-            <div className="container view-tier-list-container">
-                <section className="header-container">
+            <div className="content-container container view-tier-list-container">
+                <section className="container header-container">
                     <h2 className="view-tier-list-title">{this.props.tierList.title}</h2>
                     <p className="view-tier-list-description">{this.props.tierList.description}</p>
                 </section>
-                <section className="competitor-container">
+                <section className="container competitor-container">
                 {competitorFields}
                 </section>
                 {userButtons}
