@@ -20,4 +20,7 @@ const db = firebase.firestore();
 db.settings({ timestampsInSnapshots: true })
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-export { firebase, googleAuthProvider, db as default };
+const anonymousLogin = new firebase.auth().signInAnonymously();
+
+
+export { firebase, googleAuthProvider, anonymousLogin, db as default };

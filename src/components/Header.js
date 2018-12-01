@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { startLogout, startLogin } from '../actions/auth';
+import { startLogout, startLogin, startAnonLogin } from '../actions/auth';
 
-export const Header = ({ isAuthenticated, startLogout, startLogin }) => (
+export const Header = ({ isAuthenticated, startLogout, startAnonLogin, startLogin }) => (
   isAuthenticated ? (
   <header className="header">
     <div className="content-container">
@@ -11,6 +11,7 @@ export const Header = ({ isAuthenticated, startLogout, startLogin }) => (
         <Link className="header__title" to="/dashboard">
           <h1><i className="fas fa-list-alt"></i> Tier List Maker</h1>
         </Link>
+        <p>Logged In</p>
         <button className="nav button" onClick={startLogout}> <i className="fas fa-sign-out-alt"></i> Logout</button>
       </div>
     </div>
@@ -23,6 +24,7 @@ export const Header = ({ isAuthenticated, startLogout, startLogin }) => (
           <h1><i className="fas fa-list-alt"></i> Tier List Maker</h1>
         </Link>
         <button className="nav button" onClick={startLogin}> <i className="fas fa-sign-in-alt"></i> Login</button>
+        <button className="nav button" onClick={startAnonLogin}> <i className="fas fa-sign-in-alt"></i>Test Login</button>
       </div>
     </div>
   </header>
@@ -32,10 +34,11 @@ export const Header = ({ isAuthenticated, startLogout, startLogin }) => (
 const mapDispatchToProps = (dispatch) => ({
   startLogout: () => dispatch(startLogout()),
   startLogin: () => dispatch(startLogin()),
+  startAnonLogin: () => dispatch(startAnonLogin())
 });
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: !!state.auth.uid
+  isAuthenticated: !!state.auth.uid,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
