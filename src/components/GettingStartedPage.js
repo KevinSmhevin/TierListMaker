@@ -34,7 +34,7 @@ export const GettingStartedPage = (props) => (
                 <br></br>
                 <p>Sign in to get started!</p>
                 <br></br>
-                <p>Test Login Username: testpenguin555111@gmail.com --- Test Login Password: googleyes999</p>
+                <p>Click on "Test Login" to use an anonymous demo account</p>
                 <br></br>
                 </div>
             </Modal>
