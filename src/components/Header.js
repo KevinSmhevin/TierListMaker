@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { startLogout, startLogin, startAnonLogin } from '../actions/auth';
 
-export const Header = ({ isAuthenticated, startLogout, startAnonLogin, startLogin }) => (
+export const Header = ({ isAuthenticated, startLogout, startAnonLogin, startLogin, auth }) => (
   isAuthenticated ? (
   <header className="header">
     <div className="content-container">
@@ -11,8 +11,10 @@ export const Header = ({ isAuthenticated, startLogout, startAnonLogin, startLogi
         <Link className="header__title" to="/dashboard">
           <h1><i className="fas fa-list-alt"></i> Tier List Maker</h1>
         </Link>
-        <p>Logged In</p>
+        <div>
+        <p>Logged In as: {auth.displayName}</p>
         <button className="nav button" onClick={startLogout}> <i className="fas fa-sign-out-alt"></i> Logout</button>
+        </div>
       </div>
     </div>
   </header>
@@ -39,6 +41,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const mapStateToProps = (state) => ({
   isAuthenticated: !!state.auth.uid,
+  auth: state.auth
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);
