@@ -30,8 +30,9 @@ export const startAnonLogin = () => {
   return (dispatch) => {
     return firebase.auth().signInAnonymously().then((result) => {
       return firebase.auth().onAuthStateChanged((user) => {
+        let anonymous = "anonymous"
         const uid = user.uid;
-        const displayName = user.isAnonymous;
+        const displayName = anonymous;
         dispatch(login(uid, displayName))
       })
       
