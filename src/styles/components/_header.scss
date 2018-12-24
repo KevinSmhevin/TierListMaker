@@ -1,5 +1,5 @@
 .header {
-  background: whitesmoke;
+  background: $blue;
   border-radius: 2.5px;
   margin: 0.5px;
   box-shadow: 3px 3px 2px $dark-grey;
@@ -14,7 +14,7 @@
 }
 
 .header__title {
-  color: $blue;
+  color: whitesmoke;
   font-size: 3rem;
   text-decoration: none;
   h1 {

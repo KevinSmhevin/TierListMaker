@@ -10,26 +10,27 @@
 }
 
 .nav {
-  background: $blue;
-  color: $new-white;
+  background: $new-white;
+  color: $blue;
   border-radius: 30px;
   font-size: 1.5rem
 }
 
 .nav:hover {
-  background: $smooth-blue;
+  background: #efefef;
+  // background: $smooth-blue;
 }
 
 .create {
   border-radius: 5px;
   padding: $m-size;
   font-size: 2rem;
-  color: $blue;
-  background: $alabaster;
+  color: $alabaster;
+  background: $blue;
 }
 
 .create:hover {
-  background: #efefef;
+  background: $smooth-blue;
 }
 
 .view-button {

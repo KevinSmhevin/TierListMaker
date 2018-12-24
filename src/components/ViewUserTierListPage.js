@@ -114,7 +114,7 @@ export class ViewUserTierListPage extends React.Component {
                 onDragStart={this.onDragStart}
             >
             <div className="drag-drop-container">
-            <form onSubmit={this.onSubmit}>
+            <form className="draggable-container" onSubmit={this.onSubmit}>
                {userButtons}
                 {this.state.columnOrder.map(columnId => {
                     const column = this.state.columns[columnId];

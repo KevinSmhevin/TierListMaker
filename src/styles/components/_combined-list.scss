@@ -7,10 +7,12 @@
 .combined-tier-list-box {
     background: $blue;
     border-radius: 2.5px;  
+    overflow: auto;
     box-shadow: 3px 3px 2px $dark-grey;
     padding: $l-size $m-size;
     text-align: center;
     min-width: 25rem;
+    max-height: 100vh;
     color: white;
     margin: 5px;
   }
