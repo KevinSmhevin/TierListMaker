@@ -11,6 +11,7 @@ export class CombinedList extends React.Component {
             <div className="combined-tier-list-box">
                 <h2 className="box-title"><i className="fas fa-th-large"></i> Templates</h2>
                 <p>Create your own tier list from scratch!</p>
+                <div className="tier-list-box-container">
                 {
                     this.props.tierLists.length === 0 ? (
                         <p>No Tier List Templates</p>
@@ -20,6 +21,7 @@ export class CombinedList extends React.Component {
                         })
                     )
                 }
+                </div>
                 </div>
                 <div className="combined-tier-list-box">
                 <h2 className="box-title"><i className="fas fa-bars"></i> Tier lists</h2>

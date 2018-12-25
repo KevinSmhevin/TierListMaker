@@ -28,7 +28,7 @@ openModal() {
     return (  
       <div>
         <NavLink to="/create" className="create side button"> <i className="fas fa-plus-circle"></i> Create Tier List</NavLink>
-        <button className="create side-button" onClick={this.openModal}><i className="fas fa-question-circle"></i> Help</button>
+        <button className="create side button" onClick={this.openModal}><i className="fas fa-question-circle"></i> Help</button>
           <CombinedList />
           <GettingStartedPage modalIsOpen={this.state.modalIsOpen} closeModal={this.closeModal}/>
       </div>
