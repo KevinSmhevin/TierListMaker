@@ -45,6 +45,11 @@
     font-size: 1rem;
 }
 
+.author {
+    font-style: italic; 
+    color: #555555;
+}
+
 @include breakpoint(mobileonly) {
     .combined-tier-list-container {
         flex-direction: column;

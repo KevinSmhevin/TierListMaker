@@ -6,8 +6,8 @@ const SingleTierList = ({ id, title, description, displayName }) => (
         <Link to={`/view/${id}`}>
         <h3 className="tier-list-title clickable">{title}</h3>
         </Link>
-        <p>By {displayName}</p>
         <p>{description}</p>
+        <p  className="author">By {displayName}</p>
     </div>
 )
 
