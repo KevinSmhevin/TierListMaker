@@ -27,20 +27,19 @@
 
   .competitor-container {
       display: flex; 
-      flex-direction: row;
-      flex-wrap: wrap;
+      flex-direction: column;
       margin: auto auto $ml-size auto;
       width: 80%;
-      justify-content: center;
-      text-align: center;
       background: $alabaster;
       color: gray;
       padding: $m-size;
       border-radius: 5px;
+      align-items: center;
   }
 
   .view-competitor {
       width: 30%;
+      text-align: center;
   }
   
   .button-container {

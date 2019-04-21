@@ -18,7 +18,7 @@ html {
 
 #app::after {
   content: "";
-  background-color: #f3f3f3;
+  background: repeating-linear-gradient(45deg, white, white 5px, whitesmoke 5px, whitesmoke 10px);
   // background: url('/images/mochaGrunge.png') fixed bottom;
   top: 0; 
   left: 0;
