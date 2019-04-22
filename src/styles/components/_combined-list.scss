@@ -2,6 +2,15 @@
     display: flex;
     width: 100%;
     justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tier-list-box-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .combined-tier-list-box {
@@ -15,7 +24,9 @@
     max-height: 100vh;
     color: white;
     margin: 5px;
-    max-width: 45%;
+    min-width: 50%;
+    max-width: 90%;
+    margin-bottom: 25px;
   }
 
 .box-title {
@@ -30,6 +41,7 @@
     margin: $xs-size;
     color: $revolver;
     padding: $m-size;
+    width: 20%;
 }
 
 .tier-list-title {
@@ -54,6 +66,15 @@
     .combined-tier-list-container {
         flex-direction: column;
         align-items: center;
+    }
+    .combined-tier-list-box {
+        margin-bottom: 25px;
+    }
+    .tier-list-box-container {
+        flex-direction: column;
+    }
+    .tier-list-row {
+        width: 90%;
     }
     .box-title {
         font-size: 2rem;
