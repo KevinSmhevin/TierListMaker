@@ -12,7 +12,7 @@ export const Header = ({ isAuthenticated, startLogout, startAnonLogin, startLogi
           <h1><i className="fas fa-list-alt"></i> Tier List Maker</h1>
         </Link>
         <div>
-        <p>Logged In as: {auth.displayName}</p>
+        <p>Logged in as: {auth.displayName}</p>
         <button className="nav button" onClick={startLogout}> <i className="fas fa-sign-out-alt"></i> Logout</button>
         </div>
       </div>
