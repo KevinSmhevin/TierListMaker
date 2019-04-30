@@ -82,3 +82,9 @@
         font-size: 1.5rem
     }
 }
+
+@include breakpoint(phablet) {
+    .tier-list-row {
+        width: 35%;
+    }
+}

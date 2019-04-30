@@ -19,7 +19,6 @@ html {
 #app::after {
   content: "";
   background: repeating-linear-gradient(45deg, white, white 5px, whitesmoke 5px, whitesmoke 10px);
-  // background: url('/images/mochaGrunge.png') fixed bottom;
   top: 0; 
   left: 0;
   bottom: 0;
@@ -61,3 +60,4 @@ p {
 .error {
   color: red;
 }
+
