@@ -72,3 +72,10 @@
 .getting-started {
   margin: auto;
 }
+
+@include breakpoint(mobileonly) {
+  .create {
+    width: 40%;
+    font-size: 1.1rem;
+  }
+}

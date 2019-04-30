@@ -30,6 +30,8 @@
       flex-direction: column;
       margin: auto auto $ml-size auto;
       width: 80%;
+      max-height: 50vh;
+      overflow: auto;
       background: $alabaster;
       color: gray;
       padding: $m-size;
@@ -65,8 +67,12 @@
       width: 80%;
     }
     .button-container {
-        flex-direction: column;
+        flex-direction: row;
         justify-content: center;
         width: 100%;
+    }
+
+    .competitor-container {
+        max-height: 35vh;
     }
   }

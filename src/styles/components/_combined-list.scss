@@ -21,7 +21,7 @@
     padding: $l-size $m-size;
     text-align: center;
     min-width: 25rem;
-    max-height: 100vh;
+    max-height: 40vh;
     color: white;
     margin: 5px;
     width: 85%;
@@ -68,6 +68,7 @@
     }
     .combined-tier-list-box {
         margin-bottom: 25px;
+        max-height: 40vh;
     }
     .tier-list-box-container {
         flex-direction: column;
@@ -85,6 +86,6 @@
 
 @include breakpoint(phablet) {
     .tier-list-row {
-        width: 35%;
+        width: 25%;
     }
 }
