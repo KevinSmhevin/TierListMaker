@@ -58,7 +58,7 @@ export default class TierListCreateForm extends React.Component {
          <input
           className="form-field"
           type="text" 
-          placeholder="Competitor Name"
+          placeholder="Field Name"
           value={this.state.listOfCompetitors[i]}
           key={i} 
           data-competitor={i}

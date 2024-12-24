@@ -44,6 +44,7 @@ export class ViewTierListPage extends React.Component {
                     <p className="view-tier-list-description">{this.props.tierList.description}</p>
                 </section>
                 <section className="container competitor-container">
+                <p><b>Fields</b></p>
                 {competitorFields}
                 </section>
                 {userButtons}
