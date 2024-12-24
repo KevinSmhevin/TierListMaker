@@ -7,7 +7,7 @@ const SingleTierList = ({ id, title, description, displayName }) => (
         <h3 className="tier-list-title clickable">{title}</h3>
         </Link>
         <p>{description}</p>
-        <p  className="author">By {displayName}</p>
+        {/* <p  className="author">By {displayName}</p> */}
     </div>
 )
 
