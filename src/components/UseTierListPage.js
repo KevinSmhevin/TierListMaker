@@ -94,7 +94,7 @@ export class UseTierListPage extends React.Component {
         this.props.history.push('/')
     }
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         return (
             <DragDropContext 
                 onDragEnd={this.onDragEnd}
@@ -102,6 +102,7 @@ export class UseTierListPage extends React.Component {
             >
                 <Container>
                     <form onSubmit={this.onSubmit}>
+                        console.log(this.state)
                         {this.state.columnOrder.map(columnId => {
                             const column = this.state.columns[columnId];
                             const competitor = column.competitorIds.map((competitorId) => {
